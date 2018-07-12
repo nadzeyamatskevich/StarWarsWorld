@@ -7,5 +7,5 @@ target 'StarWarsWorld' do
 
 	pod 'Alamofire'
     pod 'RealmSwift'
-    
+        
 end

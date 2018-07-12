@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class SWCharacter: Object {
-    
+
     @objc dynamic var name = ""
     @objc dynamic var gender = ""
     @objc dynamic var birthDate = ""
@@ -18,7 +18,7 @@ class SWCharacter: Object {
     @objc dynamic var url = ""
     var species = List<String>()
     var films = List<String>()
-    
+
     override static func primaryKey() -> String? {
         return "name"
     }

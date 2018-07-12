@@ -205,6 +205,7 @@
                         <viewLayoutGuide key="safeArea" id="FuU-1G-8Th"/>
                     </view>
                     <connections>
+                        <outlet property="charactersSearch" destination="14b-7Y-3VB" id="clX-3l-8y1"/>
                         <outlet property="charactersTable" destination="0d0-gF-Lgd" id="4Vl-2H-eCK"/>
                         <outlet property="crawlTextView" destination="RDe-NT-EOy" id="CLE-Z0-w1u"/>
                         <outlet property="directorLabel" destination="vMB-MW-rhM" id="9Oh-nz-m4t"/>

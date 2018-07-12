@@ -21,6 +21,14 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupDataBase()
+        
+        self.movieTable.delegate = self
+        self.movieTable.dataSource = self
+        self.movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    func setupDataBase (){
         self.movies = self.realm.objects(SWMovie.self)
         self.planets = self.realm.objects(SWPlanet.self)
         self.species = self.realm.objects(SWSpecies.self)
@@ -43,22 +51,16 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
         }, fail: { error in
             print("ERROR: ", error)
         })
-        
-        self.movieTable.delegate = self
-        self.movieTable.dataSource = self
-        self.movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
 
 // MARK: - UITableViewDataSource
 extension SWMoviesViewController: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movies!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
         let cell:UITableViewCell = (self.movieTable.dequeueReusableCell(withIdentifier: "cell"))!
         
         let movie = movies?[indexPath.row]
@@ -70,12 +72,10 @@ extension SWMoviesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWMovieInfoViewController") as! SWMovieInfoViewController
         vc.numberOfMovie = indexPath.row
         navigationController?.pushViewController(vc, animated: true)
-
     }
 }
 

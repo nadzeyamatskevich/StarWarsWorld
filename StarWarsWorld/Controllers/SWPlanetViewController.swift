@@ -24,13 +24,17 @@ class SWPlanetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         self.currentPlanet = realm.object(ofType: SWPlanet.self, forPrimaryKey: planetPrimaryKey)
+        setupInfo()
+        
+    }
+    
+    func setupInfo() {
+        self.currentPlanet = realm.object(ofType: SWPlanet.self, forPrimaryKey: planetPrimaryKey)
         
         self.navigationItem.title = self.currentPlanet?.name
         self.populationLabel.text = "Population " + (self.currentPlanet?.population)!
         self.climateLabel.text = "Climate " + (self.currentPlanet?.climate)!
         self.diameterLabel.text = "Diameter " + (self.currentPlanet?.diameter)!
         self.terrainLabel.text = "Terrain " + (self.currentPlanet?.terrain)!
-        
     }
 }
