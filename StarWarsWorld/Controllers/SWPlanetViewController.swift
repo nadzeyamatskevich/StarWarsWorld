@@ -25,7 +25,6 @@ class SWPlanetViewController: UIViewController {
         super.viewDidLoad()
 
         setupInfo()
-        
     }
     
     func setupInfo() {
