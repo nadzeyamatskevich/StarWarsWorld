@@ -7,19 +7,22 @@
 //
 
 import Foundation
-import RealmSwift
 
-class SWMovie: Object {
+class SWMovie: Decodable {
     
-    @objc dynamic var title = ""
-    @objc dynamic var episodeID = 0
-    @objc dynamic var releaseDate = ""
-    @objc dynamic var director = ""
-    @objc dynamic var crawl = ""
-    @objc dynamic var url = ""
-    var characters = List<String>()
-    
-    override static func primaryKey() -> String? {
-        return "url"
-    }
+    let title: String
+    let episode_id: Int
+    let release_date: String
+    let director: String
+    let opening_crawl: String
+    let url: String
+    let characters: [String]
+}
+
+class SWMovieResponse: Decodable {
+
+    let count: Int
+    let next: String?
+    let previous: String?
+    let results: [SWMovie]
 }

@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class SWPlanet: Object {
+class SWPlanet: Object, Decodable {
 
     @objc dynamic var name = ""
     @objc dynamic var population = ""

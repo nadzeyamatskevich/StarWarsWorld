@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class SWCharacter: Object {
+class SWCharacter: Object, Decodable {
 
     @objc dynamic var name = ""
     @objc dynamic var gender = ""

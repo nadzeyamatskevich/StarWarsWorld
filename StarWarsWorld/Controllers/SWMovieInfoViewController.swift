@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
 
@@ -17,16 +16,12 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var crawlTextView: UITextView!
     @IBOutlet weak var charactersTable: UITableView!
     @IBOutlet weak var charactersSearch: UISearchBar!
-    
-    var numberOfMovie = 0
-    
-    let realm = try! Realm()
-    var movies: Results<SWMovie>?
+
     var movie: SWMovie?
     
-    var characters: Results<SWCharacter>?
+    var characters: [SWCharacter] = []
     
-    var charactersURLS: List<String>?
+    var charactersURLS: [String] = []
     var charactersNames: [String] = []
     var filteredNames: [String] = []
     var notFilteredNames: [String] = []
@@ -48,14 +43,11 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupUI() {
-        self.movies = self.realm.objects(SWMovie.self)
-        self.movie = movies![numberOfMovie]
-        
         self.navigationItem.title = movie?.title
-        self.episodeIDLabel.text = "Episode \((movie?.episodeID)!)"
-        self.releaseDateLabel.text = "Release " + (movie?.releaseDate)!
+        self.episodeIDLabel.text = "Episode \((movie?.episode_id)!)"
+        self.releaseDateLabel.text = "Release " + (movie?.release_date)!
         self.directorLabel.text = "Director " + (movie?.director)!
-        self.crawlTextView.text = (movie?.crawl)!
+        self.crawlTextView.text = (movie?.opening_crawl)!
     }
     
     func setupAutoscrollForCrawl(){
@@ -71,18 +63,18 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupCharactersTable() {
-        SWSwapiManager.getCharacter(page: "", success: {
+        /*SWSwapiManager.getCharacter(page: "", success: {
             self.characters = self.realm.objects(SWCharacter.self)
             self.charactersURLS = self.movie?.characters
             self.getMoviesChar(charArray: self.charactersURLS!)
         }, fail: { error in
             print("ERROR: ", error)
-        })
+        })*/
     }
     
-    func getMoviesChar(charArray: List<String>){
+    func getMoviesChar(charArray: [String]){
         for char in charArray  {
-          for swChar in self.characters! {
+          for swChar in self.characters {
                 if swChar.url == char {
                     self.charactersNames.append(swChar.name)
                 }

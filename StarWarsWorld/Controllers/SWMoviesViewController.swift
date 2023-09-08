@@ -14,7 +14,7 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
     @IBOutlet weak var movieTable: UITableView!
 
     let realm = try! Realm()
-    var movies: Results<SWMovie>?
+    var movies: [SWMovie] = []
     var planets: Results<SWPlanet>?
     var species: Results<SWSpecies>?
     
@@ -29,12 +29,12 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
     }
     
     func setupDataBase (){
-        self.movies = self.realm.objects(SWMovie.self)
-        self.planets = self.realm.objects(SWPlanet.self)
-        self.species = self.realm.objects(SWSpecies.self)
+        //self.movies = self.realm.objects(SWMovie.self)
+        //self.planets = self.realm.objects(SWPlanet.self)
+        //self.species = self.realm.objects(SWSpecies.self)
         
-        SWSwapiManager.getMovies( success: {
-            self.movies = self.realm.objects(SWMovie.self)
+        SWSwapiManager.getMovies( success: { movies in
+            self.movies = movies
             self.movieTable.reloadData()
         }, fail: { error in
             print("ERROR: ", error)
@@ -57,16 +57,16 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies!.count
+        return self.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (self.movieTable.dequeueReusableCell(withIdentifier: "cell"))!
         
-        let movie = movies?[indexPath.row]
+        let movie = movies[indexPath.row]
         cell.backgroundColor = UIColor.darkGray
         cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.text = movie?.title
+        cell.textLabel?.text = movie.title
         
         return cell
     }
@@ -75,7 +75,7 @@ extension SWMoviesViewController: UITableViewDataSource {
        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWMovieInfoViewController") as! SWMovieInfoViewController
-        vc.numberOfMovie = indexPath.row
+        vc.movie = movies[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

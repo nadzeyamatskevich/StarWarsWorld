@@ -60,12 +60,12 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupMovieTable() {
-        for movie in (currentCharacter?.films)! {
+        /*for movie in (currentCharacter?.films)! {
             let moviePrimaryKey = movie
             let currentMovie = realm.object(ofType: SWMovie.self, forPrimaryKey: moviePrimaryKey)
             self.movieArray.append((currentMovie?.title)!)
         }
-        self.filmsTable.reloadData()
+        self.filmsTable.reloadData()*/
     }
     
     func setupSpeciesTable() {

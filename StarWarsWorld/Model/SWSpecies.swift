@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class SWSpecies: Object {
+class SWSpecies: Object, Decodable {
         
     @objc dynamic var name = ""
     @objc dynamic var url = ""
