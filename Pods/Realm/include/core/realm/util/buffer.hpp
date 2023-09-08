@@ -39,17 +39,12 @@ namespace util {
 template <class T>
 class Buffer {
 public:
-    Buffer() noexcept
-        : m_size(0)
-    {
-    }
-    explicit Buffer(size_t initial_size);
-    Buffer(Buffer<T>&&) noexcept = default;
-    ~Buffer() noexcept
-    {
-    }
+    using value_type = T;
 
-    Buffer<T>& operator=(Buffer<T>&&) noexcept = default;
+    Buffer() noexcept = default;
+    explicit Buffer(size_t initial_size);
+    Buffer(Buffer&&) noexcept = default;
+    Buffer<T>& operator=(Buffer&&) noexcept = default;
 
     T& operator[](size_t i) noexcept
     {
@@ -83,7 +78,7 @@ public:
     void set_size(size_t new_size);
 
     /// \param new_size Specifies the new buffer size.
-    /// \param copy_begin, copy_end Specifies a range of element
+    /// \param copy_begin copy_end Specifies a range of element
     /// values to be retained. \a copy_end must be less than, or equal
     /// to size().
     ///
@@ -96,7 +91,8 @@ public:
 
     void reserve_extra(size_t used_size, size_t min_extra_capacity);
 
-    T* release() noexcept;
+    /// Release the internal buffer to the caller.
+    REALM_NODISCARD std::unique_ptr<T[]> release() noexcept;
 
     friend void swap(Buffer& a, Buffer& b) noexcept
     {
@@ -107,7 +103,7 @@ public:
 
 private:
     std::unique_ptr<T[]> m_data;
-    size_t m_size;
+    size_t m_size = 0;
 };
 
 
@@ -117,16 +113,17 @@ private:
 template <class T>
 class AppendBuffer {
 public:
-    AppendBuffer() noexcept;
-    ~AppendBuffer() noexcept
-    {
-    }
+    using value_type = T;
 
+    AppendBuffer() noexcept = default;
     AppendBuffer(AppendBuffer&&) noexcept = default;
     AppendBuffer& operator=(AppendBuffer&&) noexcept = default;
 
     /// Returns the current size of the buffer.
     size_t size() const noexcept;
+
+    /// Returns the current capcity of the buffer.
+    size_t capacity() const noexcept;
 
     /// Gives read and write access to the elements.
     T* data() noexcept;
@@ -160,11 +157,18 @@ public:
     /// buffer may be larger than the amount of data appended to this buffer.
     /// Callers should call `size()` prior to releasing the buffer to know the
     /// usable/logical size.
-    Buffer<T> release() noexcept;
+    REALM_NODISCARD Buffer<T> release() noexcept;
+
+    friend void swap(AppendBuffer& a, AppendBuffer& b) noexcept
+    {
+        using std::swap;
+        swap(a.m_buffer, b.m_buffer);
+        swap(a.m_size, b.m_size);
+    }
 
 private:
     util::Buffer<T> m_buffer;
-    size_t m_size;
+    size_t m_size = 0;
 };
 
 
@@ -180,7 +184,7 @@ public:
 
 template <class T>
 inline Buffer<T>::Buffer(size_t initial_size)
-    : m_data(new T[initial_size]) // Throws
+    : m_data(std::make_unique<T[]>(initial_size)) // Throws
     , m_size(initial_size)
 {
 }
@@ -188,16 +192,16 @@ inline Buffer<T>::Buffer(size_t initial_size)
 template <class T>
 inline void Buffer<T>::set_size(size_t new_size)
 {
-    m_data.reset(new T[new_size]); // Throws
+    m_data = std::make_unique<T[]>(new_size); // Throws
     m_size = new_size;
 }
 
 template <class T>
 inline void Buffer<T>::resize(size_t new_size, size_t copy_begin, size_t copy_end, size_t copy_to)
 {
-    std::unique_ptr<T[]> new_data(new T[new_size]); // Throws
+    auto new_data = std::make_unique<T[]>(new_size); // Throws
     realm::safe_copy_n(m_data.get() + copy_begin, copy_end - copy_begin, new_data.get() + copy_to);
-    m_data.reset(new_data.release());
+    m_data = std::move(new_data);
     m_size = new_size;
 }
 
@@ -229,23 +233,22 @@ inline void Buffer<T>::reserve_extra(size_t used_size, size_t min_extra_capacity
 }
 
 template <class T>
-inline T* Buffer<T>::release() noexcept
+inline std::unique_ptr<T[]> Buffer<T>::release() noexcept
 {
     m_size = 0;
-    return m_data.release();
-}
-
-
-template <class T>
-inline AppendBuffer<T>::AppendBuffer() noexcept
-    : m_size(0)
-{
+    return std::move(m_data);
 }
 
 template <class T>
 inline size_t AppendBuffer<T>::size() const noexcept
 {
     return m_size;
+}
+
+template <class T>
+inline size_t AppendBuffer<T>::capacity() const noexcept
+{
+    return m_buffer.size();
 }
 
 template <class T>
