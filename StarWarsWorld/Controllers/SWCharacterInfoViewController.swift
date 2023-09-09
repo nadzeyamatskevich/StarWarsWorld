@@ -39,13 +39,12 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupCharacterInfo() {
-        let planetPrimaryKey = (currentCharacter?.homeworld)!
-        //let currentPlanet = realm.object(ofType: SWPlanet.self, forPrimaryKey: planetPrimaryKey)
-        
-        self.navigationItem.title = currentCharacter?.name
-        self.genderLabel.text = "Gender \((currentCharacter?.gender)!)"
-        self.birthLabel.text = "Birth date " + (currentCharacter?.birth_year)!
-        //self.homeworldLabel.text = "Homeworld " + (currentPlanet?.name)!
+        guard let person = currentCharacter else { return }
+
+        self.navigationItem.title = person.name
+        self.genderLabel.text = "Gender" + person.gender
+        self.birthLabel.text = "Birth date " + person.birth_year
+        self.homeworldLabel.text = "Homeworld " + person.homeworld
     }
     
     func setupHomeworldTap() {
@@ -54,46 +53,55 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupMovieTable() {
-        /*for movie in (currentCharacter?.films)! {
-            let moviePrimaryKey = movie
-            let currentMovie = realm.object(ofType: SWMovie.self, forPrimaryKey: moviePrimaryKey)
-            self.movieArray.append((currentMovie?.title)!)
+        guard let person = currentCharacter else { return }
+
+        for movie in person.films {
+            //let moviePrimaryKey = movie
+            //let currentMovie = realm.object(ofType: SWMovie.self, forPrimaryKey: moviePrimaryKey)
+            //self.movieArray.append((currentMovie?.title)!)
         }
-        self.filmsTable.reloadData()*/
+        self.filmsTable.reloadData()
     }
     
     func setupSpeciesTable() {
-        /*for species in (currentCharacter?.species)! {
-            let speciesPrimaryKey = species
-            let currentSpecies = realm.object(ofType: SWSpecies.self, forPrimaryKey: speciesPrimaryKey)
-            self.speciesArray.append((currentSpecies?.name)!)
+        guard let person = currentCharacter else { return }
+
+        for species in person.species {
+            //let speciesPrimaryKey = species
+            //let currentSpecies =
+            //self.speciesArray.append((currentSpecies?.name)!)
         }
-        self.speciesTable.reloadData()*/
+        self.speciesTable.reloadData()
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
-        /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let person = currentCharacter else { return }
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWPlanetViewController") as! SWPlanetViewController
-        vc.planetPrimaryKey = (self.currentCharacter?.homeworld)!
-        navigationController?.pushViewController(vc, animated: true)*/
+        vc.currentPlanetUrl = URL(string: person.homeworld)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 // MARK: - UITableViewDataSource
 extension SWCharacterInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let person = currentCharacter else { return 0 }
+
         if tableView == self.speciesTable {
-            return self.speciesArray.count
+            return person.species.count
         } else {
-            return self.movieArray.count
+            return person.films.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == self.speciesTable {
             let cell:UITableViewCell = (self.speciesTable.dequeueReusableCell(withIdentifier: "cell"))!
-            
-            let char = self.speciesArray[indexPath.row]
+            guard let person = currentCharacter else { return cell }
+
+            let char = person.species[indexPath.row]
             cell.textLabel?.text = char
             cell.backgroundColor = UIColor.darkGray
             cell.textLabel?.textColor = UIColor.white
@@ -101,7 +109,9 @@ extension SWCharacterInfoViewController: UITableViewDataSource {
             return cell
         } else {
             let cell:UITableViewCell = (self.filmsTable.dequeueReusableCell(withIdentifier: "cell"))!
-            let char = self.movieArray[indexPath.row]
+            guard let person = currentCharacter else { return cell }
+
+            let char = person.films[indexPath.row]
             cell.textLabel?.text = char
             cell.backgroundColor = UIColor.darkGray
             cell.textLabel?.textColor = UIColor.white

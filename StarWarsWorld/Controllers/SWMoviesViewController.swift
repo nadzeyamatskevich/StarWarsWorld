@@ -12,40 +12,22 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
    
     @IBOutlet weak var movieTable: UITableView!
 
-    var movies: [SWMovie] = []
-    var planets: [SWPlanet] = []
-    var species: [SWSpecies] = []
+    private var movies: [SWMovie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupDataBase()
+        getData()
         
         self.movieTable.delegate = self
         self.movieTable.dataSource = self
         self.movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    func setupDataBase (){
-        //self.movies = self.realm.objects(SWMovie.self)
-        //self.planets = self.realm.objects(SWPlanet.self)
-        //self.species = self.realm.objects(SWSpecies.self)
-        
+    func getData() {
         SWSwapiManager.getMovies(success: { movies in
             self.movies = movies
             self.movieTable.reloadData()
-        }, fail: { error in
-            print("ERROR: ", error)
-        })
-        
-        SWSwapiManager.getPlanets(success: { planets in
-            self.planets = planets
-        }, fail: { error in
-            print("ERROR: ", error)
-        })
-        
-        SWSwapiManager.getSpecies(success: { species in
-            self.species = species
         }, fail: { error in
             print("ERROR: ", error)
         })
@@ -55,11 +37,11 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies.count
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = (self.movieTable.dequeueReusableCell(withIdentifier: "cell"))!
+        let cell: UITableViewCell = movieTable.dequeueReusableCell(withIdentifier: "cell")!
         
         let movie = movies[indexPath.row]
         cell.backgroundColor = UIColor.darkGray
@@ -75,7 +57,7 @@ extension SWMoviesViewController: UITableViewDataSource {
         let vc = storyboard.instantiateViewController(withIdentifier: "SWMovieInfoViewController") as! SWMovieInfoViewController
         vc.movie = movies[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
+
 }
 

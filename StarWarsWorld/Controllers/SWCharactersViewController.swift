@@ -13,7 +13,7 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var charactersTable: UITableView!
     @IBOutlet weak var searchInCharacters: UISearchBar!
     
-    var chatacters: [SWCharacter] = []
+    var characters: [SWCharacter] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     func setupCharactersTable() {
         
         SWSwapiManager.getCharacter(success: { chatacters in
-            self.chatacters = chatacters
+            self.characters = chatacters
             self.charactersTable.reloadData()
         }, fail: { error in
             print("ERROR: ", error)
@@ -38,8 +38,8 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     }
     
     func addDismissKeyboardTap() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //view.addGestureRecognizer(tap)
     }
     
     @objc func dismissKeyboard() {
@@ -50,18 +50,25 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWCharactersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.chatacters.count
+        return self.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (self.charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
         
-        let character = chatacters[indexPath.row]
+        let character = characters[indexPath.row]
         cell.backgroundColor = UIColor.darkGray
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = character.name
         
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SWCharacterInfoViewController") as! SWCharacterInfoViewController
+        vc.currentCharacter = characters[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -70,9 +77,9 @@ extension SWCharactersViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             let namesBeginningWithLetterPredicate = NSPredicate(format: "name BEGINSWITH[cd] %@", searchText)
-           // self.chatacters = realm.objects(SWCharacter.self).filter(namesBeginningWithLetterPredicate)
+           // self.characters = realm.objects(SWCharacter.self).filter(namesBeginningWithLetterPredicate)
         } else {
-            //self.chatacters =
+            //self.characters =
         }
         self.charactersTable.reloadData()
     }

@@ -35,10 +35,8 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
         setupUI()
         setupCharactersTable()
         setupAutoscrollForCrawl()
-        
-        self.charactersTable.delegate = self
-        self.charactersTable.dataSource = self
-        self.charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        setupTableView()
+
         self.charactersSearch.delegate = self
     }
     
@@ -48,6 +46,12 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
         self.releaseDateLabel.text = "Release " + (movie?.release_date)!
         self.directorLabel.text = "Director " + (movie?.director)!
         self.crawlTextView.text = (movie?.opening_crawl)!
+    }
+
+    func setupTableView() {
+        self.charactersTable.delegate = self
+        self.charactersTable.dataSource = self
+        self.charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func setupAutoscrollForCrawl(){
@@ -63,13 +67,14 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupCharactersTable() {
-        /*SWSwapiManager.getCharacter(page: "", success: {
-            self.characters = self.realm.objects(SWCharacter.self)
-            self.charactersURLS = self.movie?.characters
-            self.getMoviesChar(charArray: self.charactersURLS!)
+        SWSwapiManager.getCharacter(success: { characters in
+            self.characters = characters
+            self.charactersTable.reloadData()
+            //self.charactersURLS = self.movie?.characters
+            //self.getMoviesChar(charArray: self.charactersURLS!)
         }, fail: { error in
             print("ERROR: ", error)
-        })*/
+        })
     }
     
     func getMoviesChar(charArray: [String]){
@@ -87,13 +92,13 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWMovieInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.charactersNames.count
+            return charactersNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (self.charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
         
-        let char = self.charactersNames[indexPath.row] as String
+        let char = charactersNames[indexPath.row]
         cell.textLabel?.text = char
         cell.backgroundColor = UIColor.darkGray
         cell.textLabel?.textColor = UIColor.white
@@ -104,7 +109,7 @@ extension SWMovieInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWCharacterInfoViewController") as! SWCharacterInfoViewController
-        vc.currentCharacter = self.characters[indexPath.row]
+        vc.currentCharacter = characters[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

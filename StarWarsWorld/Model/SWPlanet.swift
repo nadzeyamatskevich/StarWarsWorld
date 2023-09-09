@@ -16,6 +16,7 @@ class SWPlanet: Decodable {
     let diameter: String
     let terrain: String
     let url: String
+
 }
 
 class SWPlanetResponse: Decodable {
@@ -24,4 +25,5 @@ class SWPlanetResponse: Decodable {
     let next: String?
     let previous: String?
     let results: [SWPlanet]
+
 }
