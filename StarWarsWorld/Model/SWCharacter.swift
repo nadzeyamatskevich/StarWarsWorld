@@ -7,19 +7,22 @@
 //
 
 import Foundation
-import RealmSwift
 
-class SWCharacter: Object, Decodable {
+class SWCharacter: Decodable {
 
-    @objc dynamic var name = ""
-    @objc dynamic var gender = ""
-    @objc dynamic var birthDate = ""
-    @objc dynamic var homeworld = ""
-    @objc dynamic var url = ""
-    var species = List<String>()
-    var films = List<String>()
+    let name: String
+    let gender: String
+    let birth_year: String
+    let homeworld: String
+    let url: String
+    let species: [String]
+    let films: [String]
+}
 
-    override static func primaryKey() -> String? {
-        return "name"
-    }
+class SWCharacterResponse: Decodable {
+
+    let count: Int
+    let next: String?
+    let previous: String?
+    let results: [SWCharacter]
 }

@@ -16,11 +16,8 @@ class SWPlanetViewController: UIViewController {
     @IBOutlet weak var diameterLabel: UILabel!
     @IBOutlet weak var terrainLabel: UILabel!
     
-    let realm = try! Realm()
     var currentPlanet: SWPlanet?
-    
-    var planetPrimaryKey = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,8 +25,6 @@ class SWPlanetViewController: UIViewController {
     }
     
     func setupInfo() {
-        self.currentPlanet = realm.object(ofType: SWPlanet.self, forPrimaryKey: planetPrimaryKey)
-        
         self.navigationItem.title = self.currentPlanet?.name
         self.populationLabel.text = "Population " + (self.currentPlanet?.population)!
         self.climateLabel.text = "Climate " + (self.currentPlanet?.climate)!

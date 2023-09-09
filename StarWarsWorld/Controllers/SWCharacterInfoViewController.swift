@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
 
@@ -16,10 +15,7 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var homeworldLabel: UILabel!
     @IBOutlet weak var speciesTable: UITableView!
     @IBOutlet weak var filmsTable: UITableView!
-    
-    var characterPrimaryKey = ""
-    let realm = try! Realm()
-    
+
     var movieArray: [String] = []
     var speciesArray: [String] = []
     
@@ -43,15 +39,13 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupCharacterInfo() {
-        self.currentCharacter = realm.object(ofType: SWCharacter.self, forPrimaryKey: characterPrimaryKey)
-        
         let planetPrimaryKey = (currentCharacter?.homeworld)!
-        let currentPlanet = realm.object(ofType: SWPlanet.self, forPrimaryKey: planetPrimaryKey)
+        //let currentPlanet = realm.object(ofType: SWPlanet.self, forPrimaryKey: planetPrimaryKey)
         
         self.navigationItem.title = currentCharacter?.name
         self.genderLabel.text = "Gender \((currentCharacter?.gender)!)"
-        self.birthLabel.text = "Birth date " + (currentCharacter?.birthDate)!
-        self.homeworldLabel.text = "Homeworld " + (currentPlanet?.name)!
+        self.birthLabel.text = "Birth date " + (currentCharacter?.birth_year)!
+        //self.homeworldLabel.text = "Homeworld " + (currentPlanet?.name)!
     }
     
     func setupHomeworldTap() {
@@ -69,19 +63,19 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupSpeciesTable() {
-        for species in (currentCharacter?.species)! {
+        /*for species in (currentCharacter?.species)! {
             let speciesPrimaryKey = species
             let currentSpecies = realm.object(ofType: SWSpecies.self, forPrimaryKey: speciesPrimaryKey)
             self.speciesArray.append((currentSpecies?.name)!)
         }
-        self.speciesTable.reloadData()
+        self.speciesTable.reloadData()*/
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWPlanetViewController") as! SWPlanetViewController
         vc.planetPrimaryKey = (self.currentCharacter?.homeworld)!
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)*/
     }
 }
 

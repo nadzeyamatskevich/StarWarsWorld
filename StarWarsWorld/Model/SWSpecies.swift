@@ -7,14 +7,17 @@
 //
 
 import Foundation
-import RealmSwift
 
-class SWSpecies: Object, Decodable {
+class SWSpecies: Decodable {
         
-    @objc dynamic var name = ""
-    @objc dynamic var url = ""
+    let name: String
+    let url: String
+}
+
+class SWSpeciesResponse: Decodable {
     
-    override static func primaryKey() -> String? {
-        return "url"
-    }
+    let count: Int
+    let next: String?
+    let previous: String?
+    let results: [SWSpecies]
 }

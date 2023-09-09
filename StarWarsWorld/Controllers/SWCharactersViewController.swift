@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SWCharactersViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var charactersTable: UITableView!
     @IBOutlet weak var searchInCharacters: UISearchBar!
     
-    let realm = try! Realm()
-    var chatacters: Results<SWCharacter>?
+    var chatacters: [SWCharacter] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +28,9 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupCharactersTable() {
-        self.chatacters = self.realm.objects(SWCharacter.self)
         
-        SWSwapiManager.getCharacter(page: "", success: {
-            self.chatacters = self.realm.objects(SWCharacter.self)
+        SWSwapiManager.getCharacter(success: { chatacters in
+            self.chatacters = chatacters
             self.charactersTable.reloadData()
         }, fail: { error in
             print("ERROR: ", error)
@@ -53,16 +50,16 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWCharactersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.chatacters?.count)!
+        return self.chatacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (self.charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
         
-        let character = chatacters?[indexPath.row]
+        let character = chatacters[indexPath.row]
         cell.backgroundColor = UIColor.darkGray
         cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.text = character?.name
+        cell.textLabel?.text = character.name
         
         return cell
     }
@@ -73,9 +70,9 @@ extension SWCharactersViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             let namesBeginningWithLetterPredicate = NSPredicate(format: "name BEGINSWITH[cd] %@", searchText)
-            self.chatacters = realm.objects(SWCharacter.self).filter(namesBeginningWithLetterPredicate)
+           // self.chatacters = realm.objects(SWCharacter.self).filter(namesBeginningWithLetterPredicate)
         } else {
-            self.chatacters = self.realm.objects(SWCharacter.self)
+            //self.chatacters =
         }
         self.charactersTable.reloadData()
     }

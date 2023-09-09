@@ -40,58 +40,59 @@ class SWSwapiManager {
         }
     }
     
-    static func getCharacter(page: String, success: @escaping () -> Void, fail: @escaping (_ error: Error) -> Void) -> Void {
+    static func getCharacter(pageURL: URL? = nil, success: @escaping ([SWCharacter]) -> Void, fail: @escaping (_ error: Error) -> Void) -> Void {
 
         let charactersURL: URL?
         
-        if page == "" { charactersURL = Method.characters.url }
-        else { charactersURL = URL(string: page) }
-        
-        AF.request(charactersURL!).responseDecodable(of: [SWCharacter].self) { response in
-
-            switch response.result {
-            case .success(let data):
-                let realm = try! Realm()
-                realm.add(data, update: .modified)
-            case .failure(let error):
-                print("ERROR characters: \(error)")
-            }
-            
+        switch pageURL {
+        case .none: charactersURL = Method.characters.url
+        case .some(let url): charactersURL = url
         }
-    }
-    
-    static func getPlanets(page: String, success: @escaping () -> Void, fail: @escaping (_ error:NSError) -> Void) -> Void {
         
-        let moviesURL: URL?
-        
-        if page == "" { moviesURL = Method.planets.url }
-        else { moviesURL = URL(string: page) }
-        
-        AF.request(moviesURL!, method: .get).responseDecodable(of: [SWPlanet].self) { response in
+        AF.request(charactersURL!).responseDecodable(of: SWCharacterResponse.self) { response in
             switch response.result {
             case .success(let data):
-                let realm = try! Realm()
-                realm.add(data, update: .modified)
+                success(data.results)
             case .failure(let error):
-                print("ERROR planets: \(error)")
+                fail(error)
             }
         }
     }
     
-    static func getSpecies(page: String, success: @escaping () -> Void, fail: @escaping (_ error:NSError) -> Void) -> Void  {
+    static func getPlanets(pageURL: URL? = nil, success: @escaping ([SWPlanet]) -> Void, fail: @escaping (_ error: Error) -> Void) -> Void {
+        
+        let planetsURL: URL?
+        
+        switch pageURL {
+        case .none: planetsURL = Method.planets.url
+        case .some(let url): planetsURL = url
+        }
+        
+        AF.request(planetsURL!, method: .get).responseDecodable(of: SWPlanetResponse.self) { response in
+            switch response.result {
+            case .success(let data):
+                success(data.results)
+            case .failure(let error):
+                fail(error)
+            }
+        }
+    }
+    
+    static func getSpecies(pageURL: URL? = nil, success: @escaping ([SWSpecies]) -> Void, fail: @escaping (_ error: Error) -> Void) -> Void  {
         
         let speciesURL: URL?
         
-        if page == "" { speciesURL = Method.species.url }
-        else { speciesURL = URL(string: page) }
+        switch pageURL {
+        case .none: speciesURL = Method.species.url
+        case .some(let url): speciesURL = url
+        }
         
-        AF.request(speciesURL!, method: .get).responseDecodable(of: [SWSpecies].self) { response in
+        AF.request(speciesURL!, method: .get).responseDecodable(of: SWSpeciesResponse.self) { response in
             switch response.result {
             case .success(let data):
-                let realm = try! Realm()
-                realm.add(data, update: .modified)
+                success(data.results)
             case .failure(let error):
-                print("ERROR species: \(error)")
+                fail(error)
             }
         }
     }

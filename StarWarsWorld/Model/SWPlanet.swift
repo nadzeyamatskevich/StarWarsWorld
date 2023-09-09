@@ -7,18 +7,21 @@
 //
 
 import Foundation
-import RealmSwift
 
-class SWPlanet: Object, Decodable {
+class SWPlanet: Decodable {
 
-    @objc dynamic var name = ""
-    @objc dynamic var population = ""
-    @objc dynamic var climate = ""
-    @objc dynamic var diameter = ""
-    @objc dynamic var terrain = ""
-    @objc dynamic var url = ""
+    let name: String
+    let population: String
+    let climate: String
+    let diameter: String
+    let terrain: String
+    let url: String
+}
 
-    override static func primaryKey() -> String? {
-        return "url"
-    }
+class SWPlanetResponse: Decodable {
+
+    let count: Int
+    let next: String?
+    let previous: String?
+    let results: [SWPlanet]
 }

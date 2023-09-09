@@ -7,16 +7,14 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SWMoviesViewController: UIViewController,  UITableViewDelegate {
    
     @IBOutlet weak var movieTable: UITableView!
 
-    let realm = try! Realm()
     var movies: [SWMovie] = []
-    var planets: Results<SWPlanet>?
-    var species: Results<SWSpecies>?
+    var planets: [SWPlanet] = []
+    var species: [SWSpecies] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +31,21 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
         //self.planets = self.realm.objects(SWPlanet.self)
         //self.species = self.realm.objects(SWSpecies.self)
         
-        SWSwapiManager.getMovies( success: { movies in
+        SWSwapiManager.getMovies(success: { movies in
             self.movies = movies
             self.movieTable.reloadData()
         }, fail: { error in
             print("ERROR: ", error)
         })
         
-        SWSwapiManager.getPlanets(page: "", success: {
-            self.planets = self.realm.objects(SWPlanet.self)
+        SWSwapiManager.getPlanets(success: { planets in
+            self.planets = planets
         }, fail: { error in
             print("ERROR: ", error)
         })
         
-        SWSwapiManager.getSpecies(page: "", success: {
-            self.species = self.realm.objects(SWSpecies.self)
+        SWSwapiManager.getSpecies(success: { species in
+            self.species = species
         }, fail: { error in
             print("ERROR: ", error)
         })
