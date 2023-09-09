@@ -6,7 +6,6 @@ target 'StarWarsWorld' do
   use_frameworks!
 
 	pod 'Alamofire'
-  pod 'RealmSwift'
         
 end
 
