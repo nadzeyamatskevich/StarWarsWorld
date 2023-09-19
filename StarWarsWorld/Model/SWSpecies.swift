@@ -12,7 +12,6 @@ class SWSpecies: Decodable {
         
     let name: String
     let url: String
-
 }
 
 class SWSpeciesResponse: Decodable {
@@ -21,5 +20,4 @@ class SWSpeciesResponse: Decodable {
     let next: String?
     let previous: String?
     let results: [SWSpecies]
-
 }

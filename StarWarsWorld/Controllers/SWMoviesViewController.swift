@@ -19,9 +19,9 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
         
         getData()
         
-        self.movieTable.delegate = self
-        self.movieTable.dataSource = self
-        self.movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        movieTable.delegate = self
+        movieTable.dataSource = self
+        movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func getData() {
@@ -29,7 +29,7 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
             self.movies = movies
             self.movieTable.reloadData()
         }, fail: { error in
-            print("ERROR: ", error)
+            print("ERROR:", error)
         })
     }
 }
@@ -37,7 +37,7 @@ class SWMoviesViewController: UIViewController,  UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +56,7 @@ extension SWMoviesViewController: UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWMovieInfoViewController") as! SWMovieInfoViewController
         vc.movie = movies[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

@@ -25,6 +25,9 @@ enum SWSwapiMethod {
     }
 }
 
+//TODO: use dispach in completion
+//TODO: check flow in alamofire
+//TODO: return result (besides success and fail)
 class SWSwapiManager {
 
     //TODO: rewrite with generics
@@ -128,4 +131,5 @@ class SWSwapiManager {
             }
         }
     }
+
 }

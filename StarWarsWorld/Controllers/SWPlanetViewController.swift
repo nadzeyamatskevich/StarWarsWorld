@@ -33,10 +33,10 @@ class SWPlanetViewController: UIViewController {
     }
     
     func setupInfo(with planet: SWPlanet) {
-        self.navigationItem.title = planet.name
-        self.populationLabel.text = "Population " + planet.population
-        self.climateLabel.text = "Climate " + planet.climate
-        self.diameterLabel.text = "Diameter " + planet.diameter
-        self.terrainLabel.text = "Terrain " + planet.terrain
+        navigationItem.title = planet.name
+        populationLabel.text = "Population " + planet.population
+        climateLabel.text = "Climate " + planet.climate
+        diameterLabel.text = "Diameter " + planet.diameter
+        terrainLabel.text = "Terrain " + planet.terrain
     }
 }

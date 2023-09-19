@@ -29,22 +29,22 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
         setupMovieTable()
         setupSpeciesTable()
         
-        self.speciesTable.delegate = self
-        self.speciesTable.dataSource = self
-        self.speciesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        speciesTable.delegate = self
+        speciesTable.dataSource = self
+        speciesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        self.filmsTable.delegate = self
-        self.filmsTable.dataSource = self
-        self.filmsTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        filmsTable.delegate = self
+        filmsTable.dataSource = self
+        filmsTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func setupCharacterInfo() {
         guard let person = currentCharacter else { return }
 
-        self.navigationItem.title = person.name
-        self.genderLabel.text = "Gender" + person.gender
-        self.birthLabel.text = "Birth date " + person.birth_year
-        self.homeworldLabel.text = "Homeworld " + person.homeworld
+        navigationItem.title = person.name
+        genderLabel.text = "Gender" + person.gender
+        birthLabel.text = "Birth date " + person.birth_year
+        homeworldLabel.text = "Homeworld " + person.homeworld
     }
     
     func setupHomeworldTap() {
@@ -60,7 +60,7 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
             //let currentMovie = realm.object(ofType: SWMovie.self, forPrimaryKey: moviePrimaryKey)
             //self.movieArray.append((currentMovie?.title)!)
         }
-        self.filmsTable.reloadData()
+        filmsTable.reloadData()
     }
     
     func setupSpeciesTable() {
@@ -71,12 +71,13 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
             //let currentSpecies =
             //self.speciesArray.append((currentSpecies?.name)!)
         }
-        self.speciesTable.reloadData()
+        speciesTable.reloadData()
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         guard let person = currentCharacter else { return }
 
+        //TODO: create enum for storyboards
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWPlanetViewController") as! SWPlanetViewController
         vc.currentPlanetUrl = URL(string: person.homeworld)
@@ -86,6 +87,7 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension SWCharacterInfoViewController: UITableViewDataSource {
+    //TODO: rewrite this (delete table view for spechies)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let person = currentCharacter else { return 0 }
 

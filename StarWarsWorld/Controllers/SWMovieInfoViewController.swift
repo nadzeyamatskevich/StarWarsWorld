@@ -8,6 +8,10 @@
 
 import UIKit
 
+//TODO: use final, private etc
+//TODO: use self only if nessesary
+//TODO: change filtration for characters
+//TODO: each storyboard to differents files
 class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var episodeIDLabel: UILabel!
@@ -21,7 +25,6 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     
     var characters: [SWCharacter] = []
     
-    var charactersURLS: [String] = []
     var charactersNames: [String] = []
     var filteredNames: [String] = []
     var notFilteredNames: [String] = []
@@ -37,21 +40,21 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
         setupAutoscrollForCrawl()
         setupTableView()
 
-        self.charactersSearch.delegate = self
+        charactersSearch.delegate = self
     }
     
     func setupUI() {
-        self.navigationItem.title = movie?.title
-        self.episodeIDLabel.text = "Episode \((movie?.episode_id)!)"
-        self.releaseDateLabel.text = "Release " + (movie?.release_date)!
-        self.directorLabel.text = "Director " + (movie?.director)!
-        self.crawlTextView.text = (movie?.opening_crawl)!
+        navigationItem.title = movie?.title
+        episodeIDLabel.text = "Episode \((movie?.episode_id)!)"
+        releaseDateLabel.text = "Release " + (movie?.release_date)!
+        directorLabel.text = "Director " + (movie?.director)!
+        crawlTextView.text = (movie?.opening_crawl)!
     }
 
     func setupTableView() {
-        self.charactersTable.delegate = self
-        self.charactersTable.dataSource = self
-        self.charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        charactersTable.delegate = self
+        charactersTable.dataSource = self
+        charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func setupAutoscrollForCrawl(){
@@ -92,10 +95,11 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWMovieInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return charactersNames.count
+        charactersNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //TODO: rewrite table view cell
         let cell:UITableViewCell = (self.charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
         
         let char = charactersNames[indexPath.row]
@@ -116,6 +120,7 @@ extension SWMovieInfoViewController: UITableViewDataSource {
 
 // MARK: - UISearchBarDelegate
 extension SWMovieInfoViewController: UISearchBarDelegate {
+    //TODO: rewrite
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             filteredNames = charactersNames.filter { $0.contains(searchText) }
@@ -123,6 +128,6 @@ extension SWMovieInfoViewController: UISearchBarDelegate {
         } else {
             filteredNames = charactersNames
         }
-        self.charactersTable.reloadData()
+        charactersTable.reloadData()
     }
 }

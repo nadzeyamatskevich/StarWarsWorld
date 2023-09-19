@@ -8,6 +8,7 @@
 
 import Foundation
 
+//TODO: rewrite to struct
 class SWMovie: Decodable {
     
     let title: String
@@ -17,7 +18,6 @@ class SWMovie: Decodable {
     let opening_crawl: String
     let url: String
     let characters: [String]
-
 }
 
 class SWMovieResponse: Decodable {
@@ -26,5 +26,4 @@ class SWMovieResponse: Decodable {
     let next: String?
     let previous: String?
     let results: [SWMovie]
-
 }

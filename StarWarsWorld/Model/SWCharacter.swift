@@ -17,7 +17,6 @@ class SWCharacter: Decodable {
     let url: String
     let species: [String]
     let films: [String]
-
 }
 
 class SWCharacterResponse: Decodable {
@@ -26,5 +25,4 @@ class SWCharacterResponse: Decodable {
     let next: String?
     let previous: String?
     let results: [SWCharacter]
-
 }
