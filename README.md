@@ -1,17 +1,17 @@
 # StarWarsWorld
 
-This is my technical task from interview 2018. After 5 years I decided to rewrite this code with my updated knowlages. 
+This is my technical task from the interview 2018. After 5 years I decided to rewrite this code with my updated experience. 
 
-Todo: 
-
+Done: 
++ Update project to new Xcode version
 + Delete Realm
-+ Refactor code mistaces like force unwrap and etc.
++ Refactor code mistakes like force unwrap etc.
 
-  In Progress
+In Progress:
 - Integrate CoreData
 - Moving to Clean Swift Architecture
 - Unit tests
-- Functional tests on python
+- Functional tests on Python
 
 
 
