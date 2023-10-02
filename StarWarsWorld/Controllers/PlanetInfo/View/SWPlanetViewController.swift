@@ -24,12 +24,12 @@ class SWPlanetViewController: UIViewController {
     }
 
     func getData() {
-        guard let url = self.currentPlanetUrl else { return }
+        /*guard let url = self.currentPlanetUrl else { return }
         SWSwapiManager.getPlanet(pageURL: url, success: { planet in
             self.setupInfo(with: planet)
         }, fail: { error in
             print("Error: \(error.localizedDescription)")
-        })
+        })*/
     }
     
     func setupInfo(with planet: SWPlanet) {

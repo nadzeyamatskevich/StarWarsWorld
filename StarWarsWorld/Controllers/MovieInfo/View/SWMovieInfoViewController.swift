@@ -9,7 +9,6 @@
 import UIKit
 
 //TODO: use final, private etc
-//TODO: use self only if nessesary
 //TODO: change filtration for characters
 //TODO: each storyboard to differents files
 class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
@@ -73,14 +72,14 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupCharactersTable() {
-        SWSwapiManager.getCharacter(success: { characters in
+        /*SWSwapiManager.getCharacter(success: { characters in
             self.characters = characters
             self.charactersTable.reloadData()
             //self.charactersURLS = self.movie?.characters
             //self.getMoviesChar(charArray: self.charactersURLS!)
         }, fail: { error in
             print("ERROR: ", error)
-        })
+        })*/
     }
     
     func getMoviesChar(charArray: [String]){

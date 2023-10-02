@@ -21,20 +21,20 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
         setupCharactersTable()
         addDismissKeyboardTap()
 
-        self.charactersTable.delegate = self
-        self.charactersTable.dataSource = self
-        self.charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.searchInCharacters.delegate = self
+        charactersTable.delegate = self
+        charactersTable.dataSource = self
+        charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        searchInCharacters.delegate = self
     }
     
     func setupCharactersTable() {
         
-        SWSwapiManager.getCharacter(success: { chatacters in
+        /*SWSwapiManager.getCharacter(success: { chatacters in
             self.characters = chatacters
             self.charactersTable.reloadData()
         }, fail: { error in
             print("ERROR: ", error)
-        })
+        })*/
     }
     
     func addDismissKeyboardTap() {

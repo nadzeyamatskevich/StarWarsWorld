@@ -8,30 +8,52 @@
 
 import UIKit
 
-class SWMoviesViewController: UIViewController,  UITableViewDelegate {
+protocol SWMoviesDisplayLogic: class {
+    func displayMovies(movies: [SWMovie])
+    func displayEmptyList()
+}
+
+class SWMoviesViewController: UIViewController, UITableViewDelegate {
    
+    // - UI
     @IBOutlet weak var movieTable: UITableView!
 
+    // - Data
     private var movies: [SWMovie] = []
-    
+    private var interactor: SWMoviesInteractor?
+
+    func setup(interactor: SWMoviesInteractor) {
+        self.interactor = interactor
+        self.interactor?.fetchMovies()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getData()
-        
+
         movieTable.delegate = self
         movieTable.dataSource = self
         movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+
+}
+
+extension SWMoviesViewController: SWMoviesDisplayLogic {
     
-    func getData() {
-        SWSwapiManager.getMovies(success: { movies in
-            self.movies = movies
+    func displayMovies(movies: [SWMovie]) {
+        self.movies = movies
+        DispatchQueue.main.async {
             self.movieTable.reloadData()
-        }, fail: { error in
-            print("ERROR:", error)
-        })
+        }
     }
+    
+    func displayEmptyList() {
+        //TODO: create empty state
+        movies = []
+        DispatchQueue.main.async {
+            self.movieTable.reloadData()
+        }
+    }
+
 }
 
 // MARK: - UITableViewDataSource

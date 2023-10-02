@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		241AA0D920F0A6520096FF74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241AA0D820F0A6520096FF74 /* AppDelegate.swift */; };
 		241AA0DB20F0A6520096FF74 /* SWMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241AA0DA20F0A6520096FF74 /* SWMoviesViewController.swift */; };
-		241AA0DE20F0A6520096FF74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 241AA0DC20F0A6520096FF74 /* Main.storyboard */; };
 		241AA0E020F0A6540096FF74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 241AA0DF20F0A6540096FF74 /* Assets.xcassets */; };
 		241AA0E320F0A6540096FF74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 241AA0E120F0A6540096FF74 /* LaunchScreen.storyboard */; };
 		247F17F220F2624700962261 /* SWPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247F17F120F2624700962261 /* SWPlanet.swift */; };
@@ -21,6 +20,20 @@
 		24D8011720F0B7AC00F3A69E /* SWCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D8011620F0B7AC00F3A69E /* SWCharacter.swift */; };
 		24D8011920F0B7FD00F3A69E /* SWCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D8011820F0B7FD00F3A69E /* SWCharactersViewController.swift */; };
 		24D8011B20F0B88600F3A69E /* SWMovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D8011A20F0B88600F3A69E /* SWMovieInfoViewController.swift */; };
+		93738CD42ACB11F0003306E6 /* SWMovies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CD32ACB11F0003306E6 /* SWMovies.storyboard */; };
+		93738CD62ACB1230003306E6 /* SWPlanetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CD52ACB1230003306E6 /* SWPlanetInfo.storyboard */; };
+		93738CD82ACB125B003306E6 /* SWCharacterInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CD72ACB125B003306E6 /* SWCharacterInfo.storyboard */; };
+		93738CDA2ACB128C003306E6 /* SWCharacters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CD92ACB128C003306E6 /* SWCharacters.storyboard */; };
+		93738CDC2ACB12AA003306E6 /* SWMovieInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CDB2ACB12AA003306E6 /* SWMovieInfo.storyboard */; };
+		93738CEC2ACB2007003306E6 /* SWMoviesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CEB2ACB2007003306E6 /* SWMoviesBuilder.swift */; };
+		93738CEF2ACB2030003306E6 /* SceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CEE2ACB2030003306E6 /* SceneBuilder.swift */; };
+		93738CF12ACB20A9003306E6 /* SWMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF02ACB20A9003306E6 /* SWMoviesInteractor.swift */; };
+		93738CF32ACB2105003306E6 /* SWMoviesPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF22ACB2105003306E6 /* SWMoviesPresentor.swift */; };
+		93738CF62ACB2223003306E6 /* StoryboardEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF52ACB2223003306E6 /* StoryboardEnum.swift */; };
+		93738CFA2ACB24EC003306E6 /* Storyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF92ACB24EC003306E6 /* Storyboard+Extension.swift */; };
+		93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */; };
+		93738CFF2ACB3B31003306E6 /* SWSwapiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */; };
+		93738D012ACB40AA003306E6 /* SWTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */; };
 		E1ED60F35AD4951314A27AE7 /* Pods_StarWarsWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +41,6 @@
 		241AA0D520F0A6520096FF74 /* StarWarsWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		241AA0D820F0A6520096FF74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		241AA0DA20F0A6520096FF74 /* SWMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesViewController.swift; sourceTree = "<group>"; };
-		241AA0DD20F0A6520096FF74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		241AA0DF20F0A6540096FF74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		241AA0E220F0A6540096FF74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		241AA0E420F0A6540096FF74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +55,20 @@
 		24D8011A20F0B88600F3A69E /* SWMovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoViewController.swift; sourceTree = "<group>"; };
 		338054A849E509992EC27D14 /* Pods-StarWarsWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsWorld.release.xcconfig"; path = "Target Support Files/Pods-StarWarsWorld/Pods-StarWarsWorld.release.xcconfig"; sourceTree = "<group>"; };
 		92581FEC862F66606C6FCEF0 /* Pods-StarWarsWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsWorld.debug.xcconfig"; path = "Target Support Files/Pods-StarWarsWorld/Pods-StarWarsWorld.debug.xcconfig"; sourceTree = "<group>"; };
+		93738CD32ACB11F0003306E6 /* SWMovies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWMovies.storyboard; sourceTree = "<group>"; };
+		93738CD52ACB1230003306E6 /* SWPlanetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWPlanetInfo.storyboard; sourceTree = "<group>"; };
+		93738CD72ACB125B003306E6 /* SWCharacterInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWCharacterInfo.storyboard; sourceTree = "<group>"; };
+		93738CD92ACB128C003306E6 /* SWCharacters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWCharacters.storyboard; sourceTree = "<group>"; };
+		93738CDB2ACB12AA003306E6 /* SWMovieInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWMovieInfo.storyboard; sourceTree = "<group>"; };
+		93738CEB2ACB2007003306E6 /* SWMoviesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesBuilder.swift; sourceTree = "<group>"; };
+		93738CEE2ACB2030003306E6 /* SceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuilder.swift; sourceTree = "<group>"; };
+		93738CF02ACB20A9003306E6 /* SWMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesInteractor.swift; sourceTree = "<group>"; };
+		93738CF22ACB2105003306E6 /* SWMoviesPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesPresentor.swift; sourceTree = "<group>"; };
+		93738CF52ACB2223003306E6 /* StoryboardEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEnum.swift; sourceTree = "<group>"; };
+		93738CF92ACB24EC003306E6 /* Storyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Extension.swift"; sourceTree = "<group>"; };
+		93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWSwapiService.swift; sourceTree = "<group>"; };
+		93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWSwapiMethod.swift; sourceTree = "<group>"; };
+		93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTabbarViewController.swift; sourceTree = "<group>"; };
 		BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,8 +105,7 @@
 		241AA0D720F0A6520096FF74 /* StarWarsWorld */ = {
 			isa = PBXGroup;
 			children = (
-				247F17F020F22A7A00962261 /* Managers */,
-				241AA0EC20F0A6920096FF74 /* Model */,
+				93738CCC2ACB114B003306E6 /* Core */,
 				241AA0EA20F0A66A0096FF74 /* Controllers */,
 				241AA0EB20F0A6810096FF74 /* Views */,
 				241AA0DF20F0A6540096FF74 /* Assets.xcassets */,
@@ -94,11 +119,12 @@
 		241AA0EA20F0A66A0096FF74 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				241AA0DA20F0A6520096FF74 /* SWMoviesViewController.swift */,
-				24D8011A20F0B88600F3A69E /* SWMovieInfoViewController.swift */,
-				24D8011820F0B7FD00F3A69E /* SWCharactersViewController.swift */,
-				247F17F720F273B700962261 /* SWCharacterInfoViewController.swift */,
-				247F17F520F2738900962261 /* SWPlanetViewController.swift */,
+				93738CF72ACB223E003306E6 /* Tabbar */,
+				93738CCD2ACB1160003306E6 /* Movies */,
+				93738CCE2ACB117A003306E6 /* MovieInfo */,
+				93738CCF2ACB118B003306E6 /* Characters */,
+				93738CD02ACB1193003306E6 /* CharacterInfo */,
+				93738CD12ACB11A1003306E6 /* PlanetInfo */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -106,7 +132,6 @@
 		241AA0EB20F0A6810096FF74 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				241AA0DC20F0A6520096FF74 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,13 +163,234 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		93738CCC2ACB114B003306E6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				93738CFB2ACB35AE003306E6 /* Services */,
+				93738CF82ACB24D6003306E6 /* Extensions */,
+				93738CF42ACB2206003306E6 /* Enum */,
+				241AA0EC20F0A6920096FF74 /* Model */,
+				247F17F020F22A7A00962261 /* Managers */,
+				93738CEE2ACB2030003306E6 /* SceneBuilder.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		93738CCD2ACB1160003306E6 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				93738CED2ACB200B003306E6 /* Builder */,
+				93738CE22ACB130E003306E6 /* Interactor */,
+				93738CE12ACB1308003306E6 /* Presentor */,
+				93738CD22ACB11D6003306E6 /* View */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		93738CCE2ACB117A003306E6 /* MovieInfo */ = {
+			isa = PBXGroup;
+			children = (
+				93738CE42ACB1321003306E6 /* Interactor */,
+				93738CE32ACB131A003306E6 /* Presentor */,
+				93738CDD2ACB12C8003306E6 /* View */,
+			);
+			path = MovieInfo;
+			sourceTree = "<group>";
+		};
+		93738CCF2ACB118B003306E6 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				93738CE62ACB132E003306E6 /* Interactor */,
+				93738CE52ACB1328003306E6 /* Presentor */,
+				93738CDE2ACB12DE003306E6 /* View */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		93738CD02ACB1193003306E6 /* CharacterInfo */ = {
+			isa = PBXGroup;
+			children = (
+				93738CE82ACB133C003306E6 /* Interactor */,
+				93738CE72ACB1334003306E6 /* Presentor */,
+				93738CDF2ACB12E5003306E6 /* View */,
+			);
+			path = CharacterInfo;
+			sourceTree = "<group>";
+		};
+		93738CD12ACB11A1003306E6 /* PlanetInfo */ = {
+			isa = PBXGroup;
+			children = (
+				93738CEA2ACB134A003306E6 /* Interactor */,
+				93738CE92ACB1344003306E6 /* Presentor */,
+				93738CE02ACB12EC003306E6 /* View */,
+			);
+			path = PlanetInfo;
+			sourceTree = "<group>";
+		};
+		93738CD22ACB11D6003306E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93738CD32ACB11F0003306E6 /* SWMovies.storyboard */,
+				241AA0DA20F0A6520096FF74 /* SWMoviesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93738CDD2ACB12C8003306E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				24D8011A20F0B88600F3A69E /* SWMovieInfoViewController.swift */,
+				93738CDB2ACB12AA003306E6 /* SWMovieInfo.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93738CDE2ACB12DE003306E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				24D8011820F0B7FD00F3A69E /* SWCharactersViewController.swift */,
+				93738CD92ACB128C003306E6 /* SWCharacters.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93738CDF2ACB12E5003306E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				247F17F720F273B700962261 /* SWCharacterInfoViewController.swift */,
+				93738CD72ACB125B003306E6 /* SWCharacterInfo.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93738CE02ACB12EC003306E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				247F17F520F2738900962261 /* SWPlanetViewController.swift */,
+				93738CD52ACB1230003306E6 /* SWPlanetInfo.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93738CE12ACB1308003306E6 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+				93738CF22ACB2105003306E6 /* SWMoviesPresentor.swift */,
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		93738CE22ACB130E003306E6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				93738CF02ACB20A9003306E6 /* SWMoviesInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		93738CE32ACB131A003306E6 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		93738CE42ACB1321003306E6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		93738CE52ACB1328003306E6 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		93738CE62ACB132E003306E6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		93738CE72ACB1334003306E6 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		93738CE82ACB133C003306E6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		93738CE92ACB1344003306E6 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		93738CEA2ACB134A003306E6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		93738CED2ACB200B003306E6 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				93738CEB2ACB2007003306E6 /* SWMoviesBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		93738CF42ACB2206003306E6 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				93738CF52ACB2223003306E6 /* StoryboardEnum.swift */,
+				93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		93738CF72ACB223E003306E6 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		93738CF82ACB24D6003306E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				93738CF92ACB24EC003306E6 /* Storyboard+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		93738CFB2ACB35AE003306E6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A22285603987096BA8F75862 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				92581FEC862F66606C6FCEF0 /* Pods-StarWarsWorld.debug.xcconfig */,
 				338054A849E509992EC27D14 /* Pods-StarWarsWorld.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -178,7 +424,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "мак";
+				ORGANIZATIONNAME = nadzeyamatskevich;
 				TargetAttributes = {
 					241AA0D420F0A6520096FF74 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -208,9 +454,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93738CD62ACB1230003306E6 /* SWPlanetInfo.storyboard in Resources */,
 				241AA0E320F0A6540096FF74 /* LaunchScreen.storyboard in Resources */,
 				241AA0E020F0A6540096FF74 /* Assets.xcassets in Resources */,
-				241AA0DE20F0A6520096FF74 /* Main.storyboard in Resources */,
+				93738CDC2ACB12AA003306E6 /* SWMovieInfo.storyboard in Resources */,
+				93738CDA2ACB128C003306E6 /* SWCharacters.storyboard in Resources */,
+				93738CD82ACB125B003306E6 /* SWCharacterInfo.storyboard in Resources */,
+				93738CD42ACB11F0003306E6 /* SWMovies.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,15 +514,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D8011920F0B7FD00F3A69E /* SWCharactersViewController.swift in Sources */,
+				93738CFF2ACB3B31003306E6 /* SWSwapiMethod.swift in Sources */,
 				24D8011520F0B77C00F3A69E /* SWMovie.swift in Sources */,
+				93738CFA2ACB24EC003306E6 /* Storyboard+Extension.swift in Sources */,
 				241AA0DB20F0A6520096FF74 /* SWMoviesViewController.swift in Sources */,
 				247F17F420F26A0F00962261 /* SWSpecies.swift in Sources */,
 				247F17F620F2738900962261 /* SWPlanetViewController.swift in Sources */,
 				247F17F820F273B700962261 /* SWCharacterInfoViewController.swift in Sources */,
 				24D8011B20F0B88600F3A69E /* SWMovieInfoViewController.swift in Sources */,
 				24D8011720F0B7AC00F3A69E /* SWCharacter.swift in Sources */,
+				93738CEC2ACB2007003306E6 /* SWMoviesBuilder.swift in Sources */,
+				93738CF32ACB2105003306E6 /* SWMoviesPresentor.swift in Sources */,
+				93738D012ACB40AA003306E6 /* SWTabbarViewController.swift in Sources */,
 				241AA0D920F0A6520096FF74 /* AppDelegate.swift in Sources */,
 				24D8011320F0B71600F3A69E /* SWSwapiManager.swift in Sources */,
+				93738CEF2ACB2030003306E6 /* SceneBuilder.swift in Sources */,
+				93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */,
+				93738CF62ACB2223003306E6 /* StoryboardEnum.swift in Sources */,
+				93738CF12ACB20A9003306E6 /* SWMoviesInteractor.swift in Sources */,
 				247F17F220F2624700962261 /* SWPlanet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,14 +539,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		241AA0DC20F0A6520096FF74 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				241AA0DD20F0A6520096FF74 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		241AA0E120F0A6540096FF74 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
