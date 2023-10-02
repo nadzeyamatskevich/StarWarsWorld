@@ -44,12 +44,15 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     }
     
     func setupUI() {
-        navigationItem.title = movie?.title
-        episodeIDLabel.text = "Episode \((movie?.episode_id)!)"
-        releaseDateLabel.text = "Release " + (movie?.release_date)!
-        directorLabel.text = "Director " + (movie?.director)!
-        crawlTextView.text = (movie?.opening_crawl)!
+        guard let movie = movie else { return }
+        
+        navigationItem.title = movie.title
+        episodeIDLabel.text = "Episode \(movie.episode_id)"
+        releaseDateLabel.text = "Release " + movie.release_date
+        directorLabel.text = "Director " + movie.director
+        crawlTextView.text = movie.opening_crawl
     }
+    
 
     func setupTableView() {
         charactersTable.delegate = self

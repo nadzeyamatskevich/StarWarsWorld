@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SWPlanet: Decodable {
+struct SWPlanet: Decodable {
 
     let name: String
     let population: String
@@ -18,7 +18,7 @@ class SWPlanet: Decodable {
     let url: String
 }
 
-class SWPlanetResponse: Decodable {
+struct SWPlanetResponse: Decodable {
 
     let count: Int
     let next: String?

@@ -8,9 +8,8 @@
 
 import Foundation
 
-//TODO: rewrite to struct
-class SWMovie: Decodable {
-    
+struct SWMovie: Decodable {
+
     let title: String
     let episode_id: Int
     let release_date: String
@@ -20,7 +19,7 @@ class SWMovie: Decodable {
     let characters: [String]
 }
 
-class SWMovieResponse: Decodable {
+struct SWMovieResponse: Decodable {
 
     let count: Int
     let next: String?

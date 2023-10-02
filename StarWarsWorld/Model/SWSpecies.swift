@@ -8,13 +8,13 @@
 
 import Foundation
 
-class SWSpecies: Decodable {
+struct SWSpecies: Decodable {
         
     let name: String
     let url: String
 }
 
-class SWSpeciesResponse: Decodable {
+struct SWSpeciesResponse: Decodable {
     
     let count: Int
     let next: String?

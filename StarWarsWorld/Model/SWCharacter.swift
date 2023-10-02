@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SWCharacter: Decodable {
+struct SWCharacter: Decodable {
 
     let name: String
     let gender: String
@@ -19,7 +19,7 @@ class SWCharacter: Decodable {
     let films: [String]
 }
 
-class SWCharacterResponse: Decodable {
+struct SWCharacterResponse: Decodable {
 
     let count: Int
     let next: String?

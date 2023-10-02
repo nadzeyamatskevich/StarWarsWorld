@@ -50,11 +50,11 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SWCharactersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.characters.count
+        characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = (self.charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
+        let cell:UITableViewCell = (charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
         
         let character = characters[indexPath.row]
         cell.backgroundColor = UIColor.darkGray
@@ -81,6 +81,6 @@ extension SWCharactersViewController: UISearchBarDelegate {
         } else {
             //self.characters =
         }
-        self.charactersTable.reloadData()
+        charactersTable.reloadData()
     }
 }
