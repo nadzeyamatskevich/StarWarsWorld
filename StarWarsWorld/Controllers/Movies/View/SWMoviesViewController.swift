@@ -19,17 +19,23 @@ class SWMoviesViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var movieTable: UITableView!
 
     // - Data
+
+    // TODO: move movies property to table view manager
     private var movies: [SWMovie] = []
     private var interactor: SWMoviesInteractor?
 
     func setup(interactor: SWMoviesInteractor) {
         self.interactor = interactor
-        self.interactor?.fetchMovies()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        interactor?.fetchMovies()
+        setupTableView()
+    }
+
+    private func setupTableView() {
         movieTable.delegate = self
         movieTable.dataSource = self
         movieTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -40,6 +46,7 @@ class SWMoviesViewController: UIViewController, UITableViewDelegate {
 extension SWMoviesViewController: SWMoviesDisplayLogic {
     
     func displayMovies(movies: [SWMovie]) {
+        // TODO: reload table view via call table view manager
         self.movies = movies
         DispatchQueue.main.async {
             self.movieTable.reloadData()
@@ -57,6 +64,7 @@ extension SWMoviesViewController: SWMoviesDisplayLogic {
 }
 
 // MARK: - UITableViewDataSource
+// TODO: move to table view manager
 extension SWMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies.count
@@ -74,7 +82,7 @@ extension SWMoviesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+       //TODO: move to router
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWMovieInfoViewController") as! SWMovieInfoViewController
         vc.movie = movies[indexPath.row]

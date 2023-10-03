@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
-protocol SceneBuilder {
+protocol MoviesSceneBuilder {
     func build() -> UIViewController
+}
+
+protocol MovieInfoSceneBuilder {
+    func build(with movie: SWMovie) -> UIViewController
 }
