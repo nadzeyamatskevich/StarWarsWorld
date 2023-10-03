@@ -20,12 +20,12 @@ class SWTabbarViewController: UITabBarController {
     private func generateTabBar() {
         viewControllers = [
             generateVC(
-                viewController: SWMoviesBuilder().build(),
+                viewController: SWMoviesBuilder.build(),
                 title: "Movies",
                 image: UIImage(named: "iconMovie")
             ),
             generateVC(
-                viewController: SWMoviesBuilder().build(),
+                viewController: SWMoviesBuilder.build(),
                 title: "Characters",
                 image: UIImage(named: "iconCharacters")
             )

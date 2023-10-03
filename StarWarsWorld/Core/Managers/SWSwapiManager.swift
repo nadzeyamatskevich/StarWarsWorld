@@ -12,7 +12,6 @@ import Alamofire
 protocol ApiGateway: SWSwapiGateway {
 }
 
-//TODO: use dispach in completion
 class SWSwapiManager: ApiGateway {
 
     func getMovies(completion: @escaping ((Result<SWMovieResponse, AFError>) -> Void)) {
@@ -22,7 +21,7 @@ class SWSwapiManager: ApiGateway {
         }
     }
     
-    func getCharacter(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, AFError>) -> Void)) {
+    func getCharacters(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, AFError>) -> Void)) {
 
         var charactersURL: URL = SWSwapiMethod.people.url
         

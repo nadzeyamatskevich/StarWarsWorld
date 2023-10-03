@@ -9,8 +9,8 @@
 import Foundation
 
 protocol SWMoviesPresentationLogic {
-    func didFetchMovies(movies: [SWMovie])
-    func showError(error: Error)
+    func displayMovies(movies: [SWMovie])
+    func displayEmptyList(error: Error)
 }
 
 class SWMoviesPresenter {
@@ -24,11 +24,11 @@ class SWMoviesPresenter {
 
 extension SWMoviesPresenter: SWMoviesPresentationLogic {
     
-    func didFetchMovies(movies: [SWMovie]) {
+    func displayMovies(movies: [SWMovie]) {
         view?.displayMovies(movies: movies)
     }
     
-    func showError(error: Error) {
+    func displayEmptyList(error: Error) {
         view?.displayEmptyList()
     }
 

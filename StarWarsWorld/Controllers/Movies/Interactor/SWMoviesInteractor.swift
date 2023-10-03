@@ -27,11 +27,13 @@ extension SWMoviesInteractor: SWMoviesLogic {
     
     func fetchMovies() {
         apiService.getMovies { result in
-            switch result {
-            case .success(let success):
-                self.presenter.didFetchMovies(movies: success.results)
-            case .failure(let failure):
-                self.presenter.showError(error: failure as Error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    self.presenter.displayMovies(movies: success.results)
+                case .failure(let failure):
+                    self.presenter.displayEmptyList(error: failure as Error)
+                }
             }
         }
     }

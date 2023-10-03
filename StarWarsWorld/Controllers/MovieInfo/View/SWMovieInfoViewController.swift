@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol SWMovieInfoDisplayLogic: class {
+    func display(characters: [SWCharacter])
+    func displayEmptyList(with error: Error)
+}
+
 //TODO: use final, private etc
 //TODO: change filtration for characters
-//TODO: each storyboard to differents files
 class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var episodeIDLabel: UILabel!
@@ -20,22 +24,27 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var charactersTable: UITableView!
     @IBOutlet weak var charactersSearch: UISearchBar!
 
-    var movie: SWMovie?
+    private var movie: SWMovie?
+    private var characters: [SWCharacter] = []
     
-    var characters: [SWCharacter] = []
-    
-    var charactersNames: [String] = []
-    var filteredNames: [String] = []
-    var notFilteredNames: [String] = []
-    
-    var yOffSet = 0
-    var timer: Timer?
-    
+    private var yOffSet = 0
+    private var timer: Timer?
+
+    private var interactor: SWMovieInfoInteractor?
+    private var router: SWMovieInfoRouter?
+
+    func setup(interactor: SWMovieInfoInteractor, movie: SWMovie) {
+        self.interactor = interactor
+        self.movie = movie
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        interactor?.fetchCharacters()
+        router = SWMovieInfoRouter(source: self)
+
         setupUI()
-        setupCharactersTable()
         setupAutoscrollForCrawl()
         setupTableView()
 
@@ -59,7 +68,7 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
         charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    func setupAutoscrollForCrawl(){
+    func setupAutoscrollForCrawl() {
        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     
@@ -70,41 +79,47 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
             self.crawlTextView.contentOffset.y = CGFloat(self.yOffSet)
         })
     }
+
+}
+
+extension SWMovieInfoViewController: SWMovieInfoDisplayLogic {
     
-    func setupCharactersTable() {
-        /*SWSwapiManager.getCharacter(success: { characters in
-            self.characters = characters
-            self.charactersTable.reloadData()
-            //self.charactersURLS = self.movie?.characters
-            //self.getMoviesChar(charArray: self.charactersURLS!)
-        }, fail: { error in
-            print("ERROR: ", error)
-        })*/
+    func display(characters: [SWCharacter]) {
+        self.characters = characters
+        self.charactersTable.reloadData()
+        //self.charactersURLS = self.movie?.characters
+        //self.getMoviesChar(charArray: self.charactersURLS!)
     }
     
+    func displayEmptyList(with error: Error) {
+        //TODO: empty state
+    }
+
+    //TODO: filtered related characters for moview
     func getMoviesChar(charArray: [String]){
         for char in charArray  {
           for swChar in self.characters {
                 if swChar.url == char {
-                    self.charactersNames.append(swChar.name)
+                    //self.charactersNames.append(swChar.name)
                 }
             }
         }
        self.charactersTable.reloadData()
     }
+
 }
 
 // MARK: - UITableViewDataSource
 extension SWMovieInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        charactersNames.count
+        characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //TODO: rewrite table view cell
         let cell:UITableViewCell = (self.charactersTable.dequeueReusableCell(withIdentifier: "cell"))!
         
-        let char = charactersNames[indexPath.row]
+        let char = characters[indexPath.row].name
         cell.textLabel?.text = char
         cell.backgroundColor = UIColor.darkGray
         cell.textLabel?.textColor = UIColor.white
@@ -113,10 +128,7 @@ extension SWMovieInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SWCharacterInfoViewController") as! SWCharacterInfoViewController
-        vc.currentCharacter = characters[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        router?.showCharacterInfo(for: characters[indexPath.row])
     }
 }
 
@@ -124,12 +136,12 @@ extension SWMovieInfoViewController: UITableViewDataSource {
 extension SWMovieInfoViewController: UISearchBarDelegate {
     //TODO: rewrite
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText != "" {
+        /*if searchText != "" {
             filteredNames = charactersNames.filter { $0.contains(searchText) }
             charactersNames = filteredNames
         } else {
             filteredNames = charactersNames
-        }
+        }*/
         charactersTable.reloadData()
     }
 }

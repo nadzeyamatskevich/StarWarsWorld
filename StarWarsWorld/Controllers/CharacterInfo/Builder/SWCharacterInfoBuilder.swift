@@ -1,5 +1,5 @@
 //
-//  SWMovieInfoBuilder.swift
+//  SWCharacterInfoBuilder.swift
 //  StarWarsWorld
 //
 //  Created by Nadzeya Savitskaya on 2023-10-03.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-final class SWMovieInfoBuilder {
-    static func build(with movie: SWMovie) -> UIViewController {
+final class SWCharacterInfoBuilder {
+    static func build(with character: SWCharacter) -> UIViewController {
         let presenter = SWMovieInfoPresentor()
         let apiGateway = SWSwapiManager()
         let apiService = SWSwapiService(apiGateway: apiGateway)
         let interactor = SWMovieInfoInteractor(apiService: apiService, presenter: presenter)
 
-        guard let controller = UIStoryboard(storyboard: .movieInfo).instantiateInitialViewController() as? SWMovieInfoViewController
+        guard let controller = UIStoryboard(storyboard: .characterInfo).instantiateInitialViewController() as? SWCharacterInfoViewController
         else { return UIViewController() }
 
-        controller.setup(interactor: interactor, movie: movie)
-        presenter.setView(view: controller)
+        //controller.setup(interactor: interactor, character: character)
+        //presenter.setView(view: controller)
         return controller
     }
 }

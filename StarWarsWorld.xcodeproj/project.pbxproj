@@ -28,7 +28,6 @@
 		93738CDA2ACB128C003306E6 /* SWCharacters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CD92ACB128C003306E6 /* SWCharacters.storyboard */; };
 		93738CDC2ACB12AA003306E6 /* SWMovieInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93738CDB2ACB12AA003306E6 /* SWMovieInfo.storyboard */; };
 		93738CEC2ACB2007003306E6 /* SWMoviesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CEB2ACB2007003306E6 /* SWMoviesBuilder.swift */; };
-		93738CEF2ACB2030003306E6 /* SceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CEE2ACB2030003306E6 /* SceneBuilder.swift */; };
 		93738CF12ACB20A9003306E6 /* SWMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF02ACB20A9003306E6 /* SWMoviesInteractor.swift */; };
 		93738CF32ACB2105003306E6 /* SWMoviesPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF22ACB2105003306E6 /* SWMoviesPresentor.swift */; };
 		93738CF62ACB2223003306E6 /* StoryboardEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CF52ACB2223003306E6 /* StoryboardEnum.swift */; };
@@ -36,6 +35,10 @@
 		93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */; };
 		93738CFF2ACB3B31003306E6 /* SWSwapiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */; };
 		93738D012ACB40AA003306E6 /* SWTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */; };
+		93F1DABA2ACC392600872D02 /* SWMovieInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAB92ACC392600872D02 /* SWMovieInfoInteractor.swift */; };
+		93F1DABC2ACC393600872D02 /* SWMovieInfoPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */; };
+		93F1DABF2ACCAB1900872D02 /* SWMovieInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */; };
+		93F1DAC12ACCAB7500872D02 /* SWCharacterInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAC02ACCAB7500872D02 /* SWCharacterInfoBuilder.swift */; };
 		E1ED60F35AD4951314A27AE7 /* Pods_StarWarsWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +68,6 @@
 		93738CD92ACB128C003306E6 /* SWCharacters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWCharacters.storyboard; sourceTree = "<group>"; };
 		93738CDB2ACB12AA003306E6 /* SWMovieInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SWMovieInfo.storyboard; sourceTree = "<group>"; };
 		93738CEB2ACB2007003306E6 /* SWMoviesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesBuilder.swift; sourceTree = "<group>"; };
-		93738CEE2ACB2030003306E6 /* SceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuilder.swift; sourceTree = "<group>"; };
 		93738CF02ACB20A9003306E6 /* SWMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesInteractor.swift; sourceTree = "<group>"; };
 		93738CF22ACB2105003306E6 /* SWMoviesPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMoviesPresentor.swift; sourceTree = "<group>"; };
 		93738CF52ACB2223003306E6 /* StoryboardEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEnum.swift; sourceTree = "<group>"; };
@@ -73,6 +75,10 @@
 		93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWSwapiService.swift; sourceTree = "<group>"; };
 		93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWSwapiMethod.swift; sourceTree = "<group>"; };
 		93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTabbarViewController.swift; sourceTree = "<group>"; };
+		93F1DAB92ACC392600872D02 /* SWMovieInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoInteractor.swift; sourceTree = "<group>"; };
+		93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoPresentor.swift; sourceTree = "<group>"; };
+		93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoRouter.swift; sourceTree = "<group>"; };
+		93F1DAC02ACCAB7500872D02 /* SWCharacterInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterInfoBuilder.swift; sourceTree = "<group>"; };
 		BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,7 +192,6 @@
 		93738CCC2ACB114B003306E6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				93738CEE2ACB2030003306E6 /* SceneBuilder.swift */,
 				93738CFB2ACB35AE003306E6 /* Services */,
 				93738CF82ACB24D6003306E6 /* Extensions */,
 				93738CF42ACB2206003306E6 /* Enum */,
@@ -215,6 +220,7 @@
 				93738CE42ACB1321003306E6 /* Interactor */,
 				93738CE32ACB131A003306E6 /* Presentor */,
 				93738CDD2ACB12C8003306E6 /* View */,
+				93F1DABD2ACCAAFC00872D02 /* Router */,
 			);
 			path = MovieInfo;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 		93738CD02ACB1193003306E6 /* CharacterInfo */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DAC22ACCAB7C00872D02 /* Builder */,
 				93738CE82ACB133C003306E6 /* Interactor */,
 				93738CE72ACB1334003306E6 /* Presentor */,
 				93738CDF2ACB12E5003306E6 /* View */,
@@ -313,6 +320,7 @@
 		93738CE32ACB131A003306E6 /* Presentor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */,
 			);
 			path = Presentor;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 		93738CE42ACB1321003306E6 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DAB92ACC392600872D02 /* SWMovieInfoInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -405,6 +414,22 @@
 				93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		93F1DABD2ACCAAFC00872D02 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		93F1DAC22ACCAB7C00872D02 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				93F1DAC02ACCAB7500872D02 /* SWCharacterInfoBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		A22285603987096BA8F75862 /* Pods */ = {
@@ -540,10 +565,14 @@
 				24D8011520F0B77C00F3A69E /* SWMovie.swift in Sources */,
 				93738CFA2ACB24EC003306E6 /* Storyboard+Extension.swift in Sources */,
 				241AA0DB20F0A6520096FF74 /* SWMoviesViewController.swift in Sources */,
+				93F1DABC2ACC393600872D02 /* SWMovieInfoPresentor.swift in Sources */,
 				247F17F420F26A0F00962261 /* SWSpecies.swift in Sources */,
 				247F17F620F2738900962261 /* SWPlanetViewController.swift in Sources */,
 				9314DBCA2ACB667300C0392A /* SWMoviesRouter.swift in Sources */,
+				93F1DAC12ACCAB7500872D02 /* SWCharacterInfoBuilder.swift in Sources */,
+				93F1DABF2ACCAB1900872D02 /* SWMovieInfoRouter.swift in Sources */,
 				9314DBCD2ACC12CE00C0392A /* SWMovieInfoBuilder.swift in Sources */,
+				93F1DABA2ACC392600872D02 /* SWMovieInfoInteractor.swift in Sources */,
 				247F17F820F273B700962261 /* SWCharacterInfoViewController.swift in Sources */,
 				24D8011B20F0B88600F3A69E /* SWMovieInfoViewController.swift in Sources */,
 				24D8011720F0B7AC00F3A69E /* SWCharacter.swift in Sources */,
@@ -552,7 +581,6 @@
 				93738D012ACB40AA003306E6 /* SWTabbarViewController.swift in Sources */,
 				241AA0D920F0A6520096FF74 /* AppDelegate.swift in Sources */,
 				24D8011320F0B71600F3A69E /* SWSwapiManager.swift in Sources */,
-				93738CEF2ACB2030003306E6 /* SceneBuilder.swift in Sources */,
 				93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */,
 				93738CF62ACB2223003306E6 /* StoryboardEnum.swift in Sources */,
 				93738CF12ACB20A9003306E6 /* SWMoviesInteractor.swift in Sources */,

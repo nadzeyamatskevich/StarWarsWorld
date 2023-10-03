@@ -25,7 +25,7 @@ class SWMoviesRouter {
 extension SWMoviesRouter: SWMoviesRouterLogic {
 
     func showMovieInfo(for movie: SWMovie) {
-        let scene = SWMovieInfoBuilder().build(with: movie)
+        let scene = SWMovieInfoBuilder.build(with: movie)
         source?.navigationController?.pushViewController(scene, animated: true)
     }
 

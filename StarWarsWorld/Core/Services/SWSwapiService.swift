@@ -11,7 +11,7 @@ import Alamofire
 
 protocol SWSwapiGateway {
     func getMovies(completion: @escaping ((Result<SWMovieResponse, AFError>) -> Void))
-    func getCharacter(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, AFError>) -> Void))
+    func getCharacters(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, AFError>) -> Void))
     func getPlanets(pageURL: URL?, completion: @escaping ((Result<SWPlanetResponse, AFError>) -> Void))
     func getPlanet(pageURL: URL, completion: @escaping ((Result<SWPlanet, AFError>) -> Void))
     func getSpecies(pageURL: URL?, completion: @escaping ((Result<SWSpeciesResponse, AFError>) -> Void))
@@ -31,8 +31,8 @@ class SWSwapiService: SWSwapiGateway {
         }
     }
 
-    func getCharacter(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, Alamofire.AFError>) -> Void)) {
-        apiGateway.getCharacter(pageURL: pageURL) { result in
+    func getCharacters(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, Alamofire.AFError>) -> Void)) {
+        apiGateway.getCharacters(pageURL: pageURL) { result in
             completion(result)
         }
     }

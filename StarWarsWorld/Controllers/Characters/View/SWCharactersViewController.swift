@@ -29,7 +29,7 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     
     func setupCharactersTable() {
         
-        /*SWSwapiManager.getCharacter(success: { chatacters in
+        /*SWSwapiManager.getCharacters(success: { chatacters in
             self.characters = chatacters
             self.charactersTable.reloadData()
         }, fail: { error in

@@ -23,6 +23,7 @@ class SWMoviesViewController: UIViewController, UITableViewDelegate {
     // TODO: move movies property to table view manager
     private var movies: [SWMovie] = []
     private var interactor: SWMoviesInteractor?
+    private var router: SWMoviesRouter?
 
     func setup(interactor: SWMoviesInteractor) {
         self.interactor = interactor
@@ -32,6 +33,7 @@ class SWMoviesViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
 
         interactor?.fetchMovies()
+        router = SWMoviesRouter(source: self)
         setupTableView()
     }
 
@@ -48,17 +50,13 @@ extension SWMoviesViewController: SWMoviesDisplayLogic {
     func displayMovies(movies: [SWMovie]) {
         // TODO: reload table view via call table view manager
         self.movies = movies
-        DispatchQueue.main.async {
-            self.movieTable.reloadData()
-        }
+        movieTable.reloadData()
     }
     
     func displayEmptyList() {
         //TODO: create empty state
         movies = []
-        DispatchQueue.main.async {
-            self.movieTable.reloadData()
-        }
+        movieTable.reloadData()
     }
 
 }
@@ -82,11 +80,7 @@ extension SWMoviesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       //TODO: move to router
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SWMovieInfoViewController") as! SWMovieInfoViewController
-        vc.movie = movies[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        router?.showMovieInfo(for: movies[indexPath.row])
     }
 
 }
