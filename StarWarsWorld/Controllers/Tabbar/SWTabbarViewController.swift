@@ -35,7 +35,8 @@ class SWTabbarViewController: UITabBarController {
     private func generateVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
         viewController.tabBarItem.title = title
         viewController.tabBarItem.image = image
-        return viewController
+        let nvc = UINavigationController(rootViewController: viewController)
+        return nvc
     }
 
     private func setTabBarAppearance() {

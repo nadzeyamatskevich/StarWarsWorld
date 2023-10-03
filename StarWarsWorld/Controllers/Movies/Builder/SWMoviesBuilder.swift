@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SWMoviesBuilder: SceneBuilder {
+class SWMoviesBuilder: MoviesSceneBuilder {
     func build() -> UIViewController {
         let presenter = SWMoviesPresenter()
         let apiGateway = SWSwapiManager()
