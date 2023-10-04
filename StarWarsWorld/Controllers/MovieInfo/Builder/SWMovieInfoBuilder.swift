@@ -13,12 +13,12 @@ final class SWMovieInfoBuilder {
         let presenter = SWMovieInfoPresentor()
         let apiGateway = SWSwapiManager()
         let apiService = SWSwapiService(apiGateway: apiGateway)
-        let interactor = SWMovieInfoInteractor(apiService: apiService, presenter: presenter)
+        let interactor = SWMovieInfoInteractor(apiService: apiService, presenter: presenter, movie: movie)
 
         guard let controller = UIStoryboard(storyboard: .movieInfo).instantiateInitialViewController() as? SWMovieInfoViewController
         else { return UIViewController() }
 
-        controller.setup(interactor: interactor, movie: movie)
+        controller.setup(interactor: interactor)
         presenter.setView(view: controller)
         return controller
     }

@@ -8,35 +8,39 @@
 
 import UIKit
 
+protocol SWPlanetInfoDisplayLogic: class {
+    func displayPlanetInfo(with planet: SWPlanet)
+}
+
 class SWPlanetViewController: UIViewController {
 
     @IBOutlet weak var populationLabel: UILabel!
     @IBOutlet weak var climateLabel: UILabel!
     @IBOutlet weak var diameterLabel: UILabel!
     @IBOutlet weak var terrainLabel: UILabel!
-    
-    var currentPlanetUrl: URL?
+
+    private var interactor: SWPlanetInfoIneractorLogic?
+
+    func setup(interactor: SWPlanetInfoIneractorLogic) {
+        self.interactor = interactor
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getData()
+        interactor?.showPlanetInfo()
     }
 
-    func getData() {
-        /*guard let url = self.currentPlanetUrl else { return }
-        SWSwapiManager.getPlanet(pageURL: url, success: { planet in
-            self.setupInfo(with: planet)
-        }, fail: { error in
-            print("Error: \(error.localizedDescription)")
-        })*/
-    }
+}
+
+extension SWPlanetViewController: SWPlanetInfoDisplayLogic {
     
-    func setupInfo(with planet: SWPlanet) {
+    func displayPlanetInfo(with planet: SWPlanet) {
         navigationItem.title = planet.name
-        populationLabel.text = "Population " + planet.population
-        climateLabel.text = "Climate " + planet.climate
-        diameterLabel.text = "Diameter " + planet.diameter
-        terrainLabel.text = "Terrain " + planet.terrain
+        populationLabel.text = "Population: " + planet.population
+        climateLabel.text = "Climate: " + planet.climate
+        diameterLabel.text = "Diameter: " + planet.diameter
+        terrainLabel.text = "Terrain: " + planet.terrain
     }
+
 }

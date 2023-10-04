@@ -8,51 +8,57 @@
 
 import UIKit
 
-class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
+protocol SWCharacterInfoDisplayLogic: class {
+    func displayCharacterInfo(character: SWCharacter)
+    func displayProvided(species: String)
+    func displayDefaultSpecies(with error: Error?)
+    func displayProvided(homeworld: SWPlanet)
+    func displayDefaultHomeworld(with error: Error?)
+}
+
+class SWCharacterInfoViewController: UIViewController {
 
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var birthLabel: UILabel!
     @IBOutlet weak var homeworldLabel: UILabel!
-    @IBOutlet weak var speciesTable: UITableView!
+    @IBOutlet weak var speciesLabel: UILabel!
     @IBOutlet weak var filmsTable: UITableView!
 
-    var movieArray: [String] = []
-    var speciesArray: [String] = []
-    
     var currentCharacter: SWCharacter?
-    
+    var homeworld: SWPlanet?
+
+    private var interactor: SWCharacterInfoInteractorLogic?
+    private var router: SWCharacterInfoRouterLogic?
+
+    func setup(interactor: SWCharacterInfoInteractorLogic) {
+        self.interactor = interactor
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupCharacterInfo()
+
+        router = SWCharacterInfoRouter(source: self)
+
+        interactor?.setUpCharacter()
         setupHomeworldTap()
         setupMovieTable()
-        setupSpeciesTable()
-        
-        speciesTable.delegate = self
-        speciesTable.dataSource = self
-        speciesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
         filmsTable.delegate = self
         filmsTable.dataSource = self
         filmsTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    func setupCharacterInfo() {
-        guard let person = currentCharacter else { return }
 
-        navigationItem.title = person.name
-        genderLabel.text = "Gender" + person.gender
-        birthLabel.text = "Birth date " + person.birth_year
-        homeworldLabel.text = "Homeworld " + person.homeworld
+        guard let character = currentCharacter else { return }
+        interactor?.fetchSpeciesIfProvided(for: character)
+        interactor?.fetchHomeworldIfProvided(for: character)
     }
-    
+
     func setupHomeworldTap() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         homeworldLabel.addGestureRecognizer(tap)
     }
     
     func setupMovieTable() {
+        //TODO: make requests for movie names
         guard let person = currentCharacter else { return }
 
         for movie in person.films {
@@ -60,65 +66,67 @@ class SWCharacterInfoViewController: UIViewController, UITableViewDelegate {
             //let currentMovie = realm.object(ofType: SWMovie.self, forPrimaryKey: moviePrimaryKey)
             //self.movieArray.append((currentMovie?.title)!)
         }
-        filmsTable.reloadData()
+        //filmsTable.reloadData()
     }
-    
-    func setupSpeciesTable() {
-        guard let person = currentCharacter else { return }
 
-        for species in person.species {
-            //let speciesPrimaryKey = species
-            //let currentSpecies =
-            //self.speciesArray.append((currentSpecies?.name)!)
-        }
-        speciesTable.reloadData()
-    }
-    
     @objc func tapFunction(sender:UITapGestureRecognizer) {
-        guard let person = currentCharacter else { return }
+        guard let homeworld = self.homeworld else { return }
 
-        //TODO: create enum for storyboards
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SWPlanetViewController") as! SWPlanetViewController
-        vc.currentPlanetUrl = URL(string: person.homeworld)
-        navigationController?.pushViewController(vc, animated: true)
+        router?.showPlanet(for: homeworld)
     }
 }
 
+extension SWCharacterInfoViewController: SWCharacterInfoDisplayLogic {
+
+    func displayProvided(species: String) {
+        speciesLabel.text = "Species: " + species
+    }
+
+    func displayDefaultSpecies(with error: Error?) {
+        speciesLabel.text = "Species: Human"
+    }
+
+    func displayProvided(homeworld: SWPlanet) {
+        self.homeworld = homeworld
+        homeworldLabel.text = "Homeworld: " + homeworld.name
+    }
+
+    func displayDefaultHomeworld(with error: Error?) {
+        homeworldLabel.text = "Homeworld: do not provided"
+    }
+
+    func displayCharacterInfo(character: SWCharacter) {
+        currentCharacter = character
+        navigationItem.title = character.name
+        genderLabel.text = "Gender: " + character.gender
+        birthLabel.text = "Birth date: " + character.birth_year
+        homeworldLabel.text = "Homeworld: loading"
+        speciesLabel.text = "Species: loading"
+    }
+
+
+
+}
+
 // MARK: - UITableViewDataSource
-extension SWCharacterInfoViewController: UITableViewDataSource {
+extension SWCharacterInfoViewController: UITableViewDataSource, UITableViewDelegate {
     //TODO: rewrite this (delete table view for spechies)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let person = currentCharacter else { return 0 }
+        return person.films.count
 
-        if tableView == self.speciesTable {
-            return person.species.count
-        } else {
-            return person.films.count
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.speciesTable {
-            let cell:UITableViewCell = (self.speciesTable.dequeueReusableCell(withIdentifier: "cell"))!
-            guard let person = currentCharacter else { return cell }
 
-            let char = person.species[indexPath.row]
-            cell.textLabel?.text = char
-            cell.backgroundColor = UIColor.darkGray
-            cell.textLabel?.textColor = UIColor.white
-            
-            return cell
-        } else {
-            let cell:UITableViewCell = (self.filmsTable.dequeueReusableCell(withIdentifier: "cell"))!
-            guard let person = currentCharacter else { return cell }
+        let cell: UITableViewCell = (self.filmsTable.dequeueReusableCell(withIdentifier: "cell"))!
+        guard let person = currentCharacter else { return cell }
 
-            let char = person.films[indexPath.row]
-            cell.textLabel?.text = char
-            cell.backgroundColor = UIColor.darkGray
-            cell.textLabel?.textColor = UIColor.white
-            
-            return cell
-        }
+        let char = person.films[indexPath.row]
+        cell.textLabel?.text = char
+        cell.backgroundColor = UIColor.darkGray
+        cell.textLabel?.textColor = UIColor.white
+
+        return cell
     }
 }

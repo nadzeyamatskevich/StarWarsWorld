@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SWMoviesLogic {
+protocol SWMoviesInteractorLogic {
     func fetchMovies()
 }
 
@@ -23,7 +23,7 @@ class SWMoviesInteractor {
 
 }
 
-extension SWMoviesInteractor: SWMoviesLogic {
+extension SWMoviesInteractor: SWMoviesInteractorLogic {
     
     func fetchMovies() {
         apiService.getMovies { result in

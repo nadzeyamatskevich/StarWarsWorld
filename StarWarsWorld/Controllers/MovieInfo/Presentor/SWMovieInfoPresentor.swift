@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SWMovieInfoPresentationLogic {
+    func displayMovieInfo(with movie: SWMovie)
     func display(characters: [SWCharacter])
     func displayEmptyList(with error: Error)
 }
@@ -23,6 +24,9 @@ class SWMovieInfoPresentor {
 }
 
 extension SWMovieInfoPresentor: SWMovieInfoPresentationLogic {
+    func displayMovieInfo(with movie: SWMovie) {
+        view?.displayMovieInfo(with: movie)
+    }
 
     func display(characters: [SWCharacter]) {
         view?.display(characters: characters)

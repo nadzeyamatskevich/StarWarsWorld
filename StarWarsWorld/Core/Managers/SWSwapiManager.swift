@@ -21,7 +21,7 @@ class SWSwapiManager: ApiGateway {
         }
     }
     
-    func getCharacters(pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, AFError>) -> Void)) {
+    func getCharacters(with pageURL: URL?, completion: @escaping ((Result<SWCharacterResponse, AFError>) -> Void)) {
 
         var charactersURL: URL = SWSwapiMethod.people.url
         
@@ -35,7 +35,7 @@ class SWSwapiManager: ApiGateway {
         }
     }
     
-    func getPlanets(pageURL: URL?, completion: @escaping ((Result<SWPlanetResponse, AFError>) -> Void)) {
+    func getPlanets(with pageURL: URL?, completion: @escaping ((Result<SWPlanetResponse, AFError>) -> Void)) {
 
         var planetsURL: URL = SWSwapiMethod.planets.url
         
@@ -49,14 +49,14 @@ class SWSwapiManager: ApiGateway {
         }
     }
 
-    func getPlanet(pageURL: URL, completion: @escaping ((Result<SWPlanet, AFError>) -> Void)) {
+    func getPlanet(with url: URL, completion: @escaping ((Result<SWPlanet, AFError>) -> Void)) {
 
-        AF.request(pageURL, method: .get).responseDecodable(of: SWPlanet.self) { response in
+        AF.request(url, method: .get).responseDecodable(of: SWPlanet.self) { response in
             completion(response.result)
         }
     }
     
-    func getSpecies(pageURL: URL?, completion: @escaping ((Result<SWSpeciesResponse, AFError>) -> Void)) {
+    func getSpecies(with pageURL: URL?, completion: @escaping ((Result<SWSpeciesResponse, AFError>) -> Void)) {
 
         var speciesURL: URL = SWSwapiMethod.species.url
         
@@ -66,6 +66,13 @@ class SWSwapiManager: ApiGateway {
         }
         
         AF.request(speciesURL, method: .get).responseDecodable(of: SWSpeciesResponse.self) { response in
+            completion(response.result)
+        }
+    }
+
+    func getSpeciesInfo(with url: URL, completion: @escaping ((Result<SWSpecies, AFError>) -> Void)) {
+
+        AF.request(url, method: .get).responseDecodable(of: SWSpecies.self) { response in
             completion(response.result)
         }
     }

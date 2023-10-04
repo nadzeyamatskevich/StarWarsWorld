@@ -22,10 +22,10 @@ class SWMoviesViewController: UIViewController, UITableViewDelegate {
 
     // TODO: move movies property to table view manager
     private var movies: [SWMovie] = []
-    private var interactor: SWMoviesInteractor?
-    private var router: SWMoviesRouter?
+    private var interactor: SWMoviesInteractorLogic?
+    private var router: SWMoviesRouterLogic?
 
-    func setup(interactor: SWMoviesInteractor) {
+    func setup(interactor: SWMoviesInteractorLogic) {
         self.interactor = interactor
     }
 

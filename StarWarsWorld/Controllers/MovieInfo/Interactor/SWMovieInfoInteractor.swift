@@ -8,25 +8,32 @@
 
 import Foundation
 
-protocol SWMovieInfoLogic {
+protocol SWMovieInfoInteractorLogic {
+    func setUpMovieInfo()
     func fetchCharacters()
 }
 
 class SWMovieInfoInteractor {
-    let apiService: SWSwapiGateway
-    let presenter: SWMovieInfoPresentationLogic
+    private let apiService: SWSwapiGateway
+    private let presenter: SWMovieInfoPresentationLogic
+    private let movie: SWMovie
 
-    init(apiService: SWSwapiGateway, presenter: SWMovieInfoPresentationLogic) {
+    init(apiService: SWSwapiGateway, presenter: SWMovieInfoPresentationLogic, movie: SWMovie) {
         self.apiService = apiService
         self.presenter = presenter
+        self.movie = movie
     }
 
 }
 
-extension SWMovieInfoInteractor: SWMovieInfoLogic {
-
+extension SWMovieInfoInteractor: SWMovieInfoInteractorLogic {
+    
+    func setUpMovieInfo() {
+        presenter.displayMovieInfo(with: movie)
+    }
+    
     func fetchCharacters() {
-        apiService.getCharacters(pageURL: nil) { result in
+        apiService.getCharacters(with: nil) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let success):

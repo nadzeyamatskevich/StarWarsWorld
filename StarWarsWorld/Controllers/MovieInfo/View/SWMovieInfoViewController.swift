@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SWMovieInfoDisplayLogic: class {
+    func displayMovieInfo(with movie: SWMovie)
     func display(characters: [SWCharacter])
     func displayEmptyList(with error: Error)
 }
@@ -30,37 +31,25 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
     private var yOffSet = 0
     private var timer: Timer?
 
-    private var interactor: SWMovieInfoInteractor?
-    private var router: SWMovieInfoRouter?
+    private var interactor: SWMovieInfoInteractorLogic?
+    private var router: SWMovieInfoRouterLogic?
 
-    func setup(interactor: SWMovieInfoInteractor, movie: SWMovie) {
+    func setup(interactor: SWMovieInfoInteractorLogic) {
         self.interactor = interactor
-        self.movie = movie
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        interactor?.setUpMovieInfo()
         interactor?.fetchCharacters()
         router = SWMovieInfoRouter(source: self)
 
-        setupUI()
         setupAutoscrollForCrawl()
         setupTableView()
 
         charactersSearch.delegate = self
     }
-    
-    func setupUI() {
-        guard let movie = movie else { return }
-        
-        navigationItem.title = movie.title
-        episodeIDLabel.text = "Episode \(movie.episode_id)"
-        releaseDateLabel.text = "Release " + movie.release_date
-        directorLabel.text = "Director " + movie.director
-        crawlTextView.text = movie.opening_crawl
-    }
-    
 
     func setupTableView() {
         charactersTable.delegate = self
@@ -84,6 +73,15 @@ class SWMovieInfoViewController: UIViewController, UITableViewDelegate {
 
 extension SWMovieInfoViewController: SWMovieInfoDisplayLogic {
     
+    func displayMovieInfo(with movie: SWMovie) {
+        self.movie = movie
+        navigationItem.title = movie.title
+        episodeIDLabel.text = "Episode \(movie.episode_id)"
+        releaseDateLabel.text = "Release " + movie.release_date
+        directorLabel.text = "Director " + movie.director
+        crawlTextView.text = movie.opening_crawl
+    }
+
     func display(characters: [SWCharacter]) {
         self.characters = characters
         self.charactersTable.reloadData()

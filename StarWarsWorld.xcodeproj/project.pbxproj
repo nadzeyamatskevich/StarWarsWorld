@@ -39,6 +39,12 @@
 		93F1DABC2ACC393600872D02 /* SWMovieInfoPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */; };
 		93F1DABF2ACCAB1900872D02 /* SWMovieInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */; };
 		93F1DAC12ACCAB7500872D02 /* SWCharacterInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAC02ACCAB7500872D02 /* SWCharacterInfoBuilder.swift */; };
+		93F1DAC42ACD826600872D02 /* SWCharacterInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAC32ACD826600872D02 /* SWCharacterInfoInteractor.swift */; };
+		93F1DAC62ACD83F900872D02 /* SWCharacterInfoPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAC52ACD83F900872D02 /* SWCharacterInfoPresentor.swift */; };
+		93F1DAC92ACDE4C900872D02 /* SWCharacterInfoTouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAC82ACDE4C900872D02 /* SWCharacterInfoTouter.swift */; };
+		93F1DACC2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DACB2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift */; };
+		93F1DACE2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DACD2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift */; };
+		93F1DAD02ACDF60C00872D02 /* SWPlanetInfoPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DACF2ACDF60C00872D02 /* SWPlanetInfoPresentor.swift */; };
 		E1ED60F35AD4951314A27AE7 /* Pods_StarWarsWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +85,12 @@
 		93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoPresentor.swift; sourceTree = "<group>"; };
 		93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoRouter.swift; sourceTree = "<group>"; };
 		93F1DAC02ACCAB7500872D02 /* SWCharacterInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterInfoBuilder.swift; sourceTree = "<group>"; };
+		93F1DAC32ACD826600872D02 /* SWCharacterInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterInfoInteractor.swift; sourceTree = "<group>"; };
+		93F1DAC52ACD83F900872D02 /* SWCharacterInfoPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterInfoPresentor.swift; sourceTree = "<group>"; };
+		93F1DAC82ACDE4C900872D02 /* SWCharacterInfoTouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterInfoTouter.swift; sourceTree = "<group>"; };
+		93F1DACB2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWPlanetInfoBuilder.swift; sourceTree = "<group>"; };
+		93F1DACD2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWPlanetInfoIneractor.swift; sourceTree = "<group>"; };
+		93F1DACF2ACDF60C00872D02 /* SWPlanetInfoPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWPlanetInfoPresentor.swift; sourceTree = "<group>"; };
 		BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -242,6 +254,7 @@
 				93738CE82ACB133C003306E6 /* Interactor */,
 				93738CE72ACB1334003306E6 /* Presentor */,
 				93738CDF2ACB12E5003306E6 /* View */,
+				93F1DAC72ACDE4AE00872D02 /* Router */,
 			);
 			path = CharacterInfo;
 			sourceTree = "<group>";
@@ -249,6 +262,7 @@
 		93738CD12ACB11A1003306E6 /* PlanetInfo */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DACA2ACDE51300872D02 /* Builder */,
 				93738CEA2ACB134A003306E6 /* Interactor */,
 				93738CE92ACB1344003306E6 /* Presentor */,
 				93738CE02ACB12EC003306E6 /* View */,
@@ -350,6 +364,7 @@
 		93738CE72ACB1334003306E6 /* Presentor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DAC52ACD83F900872D02 /* SWCharacterInfoPresentor.swift */,
 			);
 			path = Presentor;
 			sourceTree = "<group>";
@@ -357,6 +372,7 @@
 		93738CE82ACB133C003306E6 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DAC32ACD826600872D02 /* SWCharacterInfoInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -364,6 +380,7 @@
 		93738CE92ACB1344003306E6 /* Presentor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DACF2ACDF60C00872D02 /* SWPlanetInfoPresentor.swift */,
 			);
 			path = Presentor;
 			sourceTree = "<group>";
@@ -371,6 +388,7 @@
 		93738CEA2ACB134A003306E6 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DACD2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -428,6 +446,22 @@
 			isa = PBXGroup;
 			children = (
 				93F1DAC02ACCAB7500872D02 /* SWCharacterInfoBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		93F1DAC72ACDE4AE00872D02 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				93F1DAC82ACDE4C900872D02 /* SWCharacterInfoTouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		93F1DACA2ACDE51300872D02 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				93F1DACB2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -560,13 +594,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F1DAC92ACDE4C900872D02 /* SWCharacterInfoTouter.swift in Sources */,
 				24D8011920F0B7FD00F3A69E /* SWCharactersViewController.swift in Sources */,
 				93738CFF2ACB3B31003306E6 /* SWSwapiMethod.swift in Sources */,
+				93F1DACE2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift in Sources */,
 				24D8011520F0B77C00F3A69E /* SWMovie.swift in Sources */,
 				93738CFA2ACB24EC003306E6 /* Storyboard+Extension.swift in Sources */,
 				241AA0DB20F0A6520096FF74 /* SWMoviesViewController.swift in Sources */,
 				93F1DABC2ACC393600872D02 /* SWMovieInfoPresentor.swift in Sources */,
 				247F17F420F26A0F00962261 /* SWSpecies.swift in Sources */,
+				93F1DACC2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift in Sources */,
+				93F1DAC62ACD83F900872D02 /* SWCharacterInfoPresentor.swift in Sources */,
 				247F17F620F2738900962261 /* SWPlanetViewController.swift in Sources */,
 				9314DBCA2ACB667300C0392A /* SWMoviesRouter.swift in Sources */,
 				93F1DAC12ACCAB7500872D02 /* SWCharacterInfoBuilder.swift in Sources */,
@@ -580,8 +618,10 @@
 				93738CF32ACB2105003306E6 /* SWMoviesPresentor.swift in Sources */,
 				93738D012ACB40AA003306E6 /* SWTabbarViewController.swift in Sources */,
 				241AA0D920F0A6520096FF74 /* AppDelegate.swift in Sources */,
+				93F1DAC42ACD826600872D02 /* SWCharacterInfoInteractor.swift in Sources */,
 				24D8011320F0B71600F3A69E /* SWSwapiManager.swift in Sources */,
 				93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */,
+				93F1DAD02ACDF60C00872D02 /* SWPlanetInfoPresentor.swift in Sources */,
 				93738CF62ACB2223003306E6 /* StoryboardEnum.swift in Sources */,
 				93738CF12ACB20A9003306E6 /* SWMoviesInteractor.swift in Sources */,
 				247F17F220F2624700962261 /* SWPlanet.swift in Sources */,

@@ -10,16 +10,16 @@ import UIKit
 
 final class SWCharacterInfoBuilder {
     static func build(with character: SWCharacter) -> UIViewController {
-        let presenter = SWMovieInfoPresentor()
+        let presenter = SWCharacterInfoPresentor()
         let apiGateway = SWSwapiManager()
         let apiService = SWSwapiService(apiGateway: apiGateway)
-        let interactor = SWMovieInfoInteractor(apiService: apiService, presenter: presenter)
+        let interactor = SWCharacterInfoInteractor(apiService: apiService, presenter: presenter, character: character)
 
         guard let controller = UIStoryboard(storyboard: .characterInfo).instantiateInitialViewController() as? SWCharacterInfoViewController
         else { return UIViewController() }
 
-        //controller.setup(interactor: interactor, character: character)
-        //presenter.setView(view: controller)
+        controller.setup(interactor: interactor)
+        presenter.setView(view: controller)
         return controller
     }
 }
