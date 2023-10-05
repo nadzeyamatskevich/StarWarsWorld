@@ -25,7 +25,7 @@ class SWTabbarViewController: UITabBarController {
                 image: UIImage(named: "iconMovie")
             ),
             generateVC(
-                viewController: SWMoviesBuilder.build(),
+                viewController: SWCharactersBuilder.build(),
                 title: "Characters",
                 image: UIImage(named: "iconCharacters")
             )

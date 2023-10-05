@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SWCharactersDisplayLogic: class {
+    func display(characters: [SWCharacter])
+    func displayEmptyList()
+}
+
 class SWCharactersViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var charactersTable: UITableView!
@@ -15,10 +20,19 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     
     var characters: [SWCharacter] = []
     
+    private var interactor: SWCharactersInteractorLogic?
+    private var router: SWCharactersRouterLogic?
+
+    func setup(interactor: SWCharactersInteractorLogic) {
+        self.interactor = interactor
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupCharactersTable()
+
+        interactor?.fetchCharacters()
+        router = SWCharactersRouter(source: self)
+
         addDismissKeyboardTap()
 
         charactersTable.delegate = self
@@ -26,17 +40,7 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
         charactersTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         searchInCharacters.delegate = self
     }
-    
-    func setupCharactersTable() {
-        
-        /*SWSwapiManager.getCharacters(success: { chatacters in
-            self.characters = chatacters
-            self.charactersTable.reloadData()
-        }, fail: { error in
-            print("ERROR: ", error)
-        })*/
-    }
-    
+
     func addDismissKeyboardTap() {
         //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         //view.addGestureRecognizer(tap)
@@ -45,6 +49,20 @@ class SWCharactersViewController: UIViewController, UITableViewDelegate {
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
+}
+
+extension SWCharactersViewController: SWCharactersDisplayLogic {
+    
+    func display(characters: [SWCharacter]) {
+        self.characters = characters
+        charactersTable.reloadData()
+    }
+    
+    func displayEmptyList() {
+        characters = []
+        charactersTable.reloadData()
+    }
+
 }
 
 // MARK: - UITableViewDataSource
@@ -65,10 +83,7 @@ extension SWCharactersViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SWCharacterInfoViewController") as! SWCharacterInfoViewController
-        vc.currentCharacter = characters[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        router?.showCharacterInfo(for: characters[indexPath.row])
     }
 }
 

@@ -35,6 +35,8 @@
 		93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */; };
 		93738CFF2ACB3B31003306E6 /* SWSwapiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */; };
 		93738D012ACB40AA003306E6 /* SWTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */; };
+		938861552ACE9778007F3794 /* SWCharactersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938861542ACE9778007F3794 /* SWCharactersInteractor.swift */; };
+		938861572ACE9825007F3794 /* SWCharactersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938861562ACE9825007F3794 /* SWCharactersRouter.swift */; };
 		93F1DABA2ACC392600872D02 /* SWMovieInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAB92ACC392600872D02 /* SWMovieInfoInteractor.swift */; };
 		93F1DABC2ACC393600872D02 /* SWMovieInfoPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */; };
 		93F1DABF2ACCAB1900872D02 /* SWMovieInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */; };
@@ -45,6 +47,8 @@
 		93F1DACC2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DACB2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift */; };
 		93F1DACE2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DACD2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift */; };
 		93F1DAD02ACDF60C00872D02 /* SWPlanetInfoPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DACF2ACDF60C00872D02 /* SWPlanetInfoPresentor.swift */; };
+		93F1DAD42ACE8CC400872D02 /* SWCharacterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAD32ACE8CC400872D02 /* SWCharacterBuilder.swift */; };
+		93F1DAD62ACE8D0C00872D02 /* SWCharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1DAD52ACE8D0C00872D02 /* SWCharactersPresenter.swift */; };
 		E1ED60F35AD4951314A27AE7 /* Pods_StarWarsWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +85,8 @@
 		93738CFC2ACB35D7003306E6 /* SWSwapiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWSwapiService.swift; sourceTree = "<group>"; };
 		93738CFE2ACB3B31003306E6 /* SWSwapiMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWSwapiMethod.swift; sourceTree = "<group>"; };
 		93738D002ACB40AA003306E6 /* SWTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTabbarViewController.swift; sourceTree = "<group>"; };
+		938861542ACE9778007F3794 /* SWCharactersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharactersInteractor.swift; sourceTree = "<group>"; };
+		938861562ACE9825007F3794 /* SWCharactersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharactersRouter.swift; sourceTree = "<group>"; };
 		93F1DAB92ACC392600872D02 /* SWMovieInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoInteractor.swift; sourceTree = "<group>"; };
 		93F1DABB2ACC393600872D02 /* SWMovieInfoPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoPresentor.swift; sourceTree = "<group>"; };
 		93F1DABE2ACCAB1900872D02 /* SWMovieInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMovieInfoRouter.swift; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 		93F1DACB2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWPlanetInfoBuilder.swift; sourceTree = "<group>"; };
 		93F1DACD2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWPlanetInfoIneractor.swift; sourceTree = "<group>"; };
 		93F1DACF2ACDF60C00872D02 /* SWPlanetInfoPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWPlanetInfoPresentor.swift; sourceTree = "<group>"; };
+		93F1DAD32ACE8CC400872D02 /* SWCharacterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterBuilder.swift; sourceTree = "<group>"; };
+		93F1DAD52ACE8D0C00872D02 /* SWCharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharactersPresenter.swift; sourceTree = "<group>"; };
 		BD98F9CAFA4F7672A6E08C2A /* Pods_StarWarsWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -240,9 +248,11 @@
 		93738CCF2ACB118B003306E6 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DAD12ACE0B8000872D02 /* Builder */,
 				93738CE62ACB132E003306E6 /* Interactor */,
 				93738CE52ACB1328003306E6 /* Presentor */,
 				93738CDE2ACB12DE003306E6 /* View */,
+				93F1DAD22ACE0B8600872D02 /* Router */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -350,6 +360,7 @@
 		93738CE52ACB1328003306E6 /* Presentor */ = {
 			isa = PBXGroup;
 			children = (
+				93F1DAD52ACE8D0C00872D02 /* SWCharactersPresenter.swift */,
 			);
 			path = Presentor;
 			sourceTree = "<group>";
@@ -357,6 +368,7 @@
 		93738CE62ACB132E003306E6 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				938861542ACE9778007F3794 /* SWCharactersInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -464,6 +476,22 @@
 				93F1DACB2ACDE80C00872D02 /* SWPlanetInfoBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		93F1DAD12ACE0B8000872D02 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				93F1DAD32ACE8CC400872D02 /* SWCharacterBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		93F1DAD22ACE0B8600872D02 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				938861562ACE9825007F3794 /* SWCharactersRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		A22285603987096BA8F75862 /* Pods */ = {
@@ -600,6 +628,7 @@
 				93F1DACE2ACDF58F00872D02 /* SWPlanetInfoIneractor.swift in Sources */,
 				24D8011520F0B77C00F3A69E /* SWMovie.swift in Sources */,
 				93738CFA2ACB24EC003306E6 /* Storyboard+Extension.swift in Sources */,
+				938861572ACE9825007F3794 /* SWCharactersRouter.swift in Sources */,
 				241AA0DB20F0A6520096FF74 /* SWMoviesViewController.swift in Sources */,
 				93F1DABC2ACC393600872D02 /* SWMovieInfoPresentor.swift in Sources */,
 				247F17F420F26A0F00962261 /* SWSpecies.swift in Sources */,
@@ -610,7 +639,9 @@
 				93F1DAC12ACCAB7500872D02 /* SWCharacterInfoBuilder.swift in Sources */,
 				93F1DABF2ACCAB1900872D02 /* SWMovieInfoRouter.swift in Sources */,
 				9314DBCD2ACC12CE00C0392A /* SWMovieInfoBuilder.swift in Sources */,
+				93F1DAD62ACE8D0C00872D02 /* SWCharactersPresenter.swift in Sources */,
 				93F1DABA2ACC392600872D02 /* SWMovieInfoInteractor.swift in Sources */,
+				93F1DAD42ACE8CC400872D02 /* SWCharacterBuilder.swift in Sources */,
 				247F17F820F273B700962261 /* SWCharacterInfoViewController.swift in Sources */,
 				24D8011B20F0B88600F3A69E /* SWMovieInfoViewController.swift in Sources */,
 				24D8011720F0B7AC00F3A69E /* SWCharacter.swift in Sources */,
@@ -620,6 +651,7 @@
 				241AA0D920F0A6520096FF74 /* AppDelegate.swift in Sources */,
 				93F1DAC42ACD826600872D02 /* SWCharacterInfoInteractor.swift in Sources */,
 				24D8011320F0B71600F3A69E /* SWSwapiManager.swift in Sources */,
+				938861552ACE9778007F3794 /* SWCharactersInteractor.swift in Sources */,
 				93738CFD2ACB35D7003306E6 /* SWSwapiService.swift in Sources */,
 				93F1DAD02ACDF60C00872D02 /* SWPlanetInfoPresentor.swift in Sources */,
 				93738CF62ACB2223003306E6 /* StoryboardEnum.swift in Sources */,
