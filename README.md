@@ -6,10 +6,11 @@ Done:
 + Update project to new Xcode version
 + Delete Realm
 + Refactor code mistakes like force unwrap etc.
++ Moving to Clean Swift Architecture
 
 In Progress:
+- Complete all TODOs
 - Integrate CoreData
-- Moving to Clean Swift Architecture
 - Unit tests
 - Functional tests on Python
 
